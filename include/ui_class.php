@@ -33,9 +33,10 @@ if (! class_exists('EGM_UserInterface')) {
             //
             $egmAttributes = shortcode_atts(
                 array(
-                    'size'      => '100%x400',
                     'address'   => '359 Wando Place Drive, Suite D, Mount Pleasant, SC 29464',
-                    'zoom'      => '12'
+                    'size'      => '100%x400',
+                    'theme'     => $egm_plugin->settings->get_item('theme'),
+                    'zoom'      => '12',
                     ), 
                 $params
                 );
