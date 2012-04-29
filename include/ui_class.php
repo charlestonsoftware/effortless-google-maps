@@ -81,8 +81,20 @@ if (! class_exists('EGM_UserInterface')) {
             $newNumber = $value;
             switch ($value) {
                 case 'world':
-                    $newNumber = '1';
+                    $newNumber = '1';                    
                     break;
+                case 'country':
+                    $newNumber='3';
+                    break;                                        
+                case 'region':
+                    $newNumber='5';
+                    break;                                        
+                case 'state':
+                    $newNumber='7';
+                    break;                                        
+                case 'county':
+                    $newNumber='9';
+                    break;                                        
                 case 'street':
                     $newNumber='15';
                     break;                    
