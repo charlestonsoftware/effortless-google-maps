@@ -4,7 +4,7 @@
  **/
 
  div#icon-Effortless_Google_Maps.icon32 {
-     background:none
+    background: url("../images/icons32.png") no-repeat scroll transparent;    
  }
  
  /*----------------------------------
@@ -59,7 +59,7 @@
 }
 
 div.icon32 {
-    background: url("../images/icons32.png") no-repeat scroll -72px -5px transparent;    
+    background: url("../images/icons32.png") no-repeat scroll transparent;    
 }
 
 
