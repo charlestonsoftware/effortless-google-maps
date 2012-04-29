@@ -46,7 +46,7 @@ if (! class_exists('EGM_Actions')) {
          * method: shutdown
          */
         function shutdown() {
-            global $egm_plugin;
+            global $egm_plugin, $egmAttributes;
             
             // If we rendered a shortcode...
             //
@@ -59,7 +59,7 @@ if (! class_exists('EGM_Actions')) {
                 
                 // Render Styles
                 //
-                $egm_plugin->themes->assign_user_stylesheet();                
+                $egm_plugin->themes->assign_user_stylesheet($egmAttributes['theme']);                
                            
                 // Force our scripts to load for badly behaved themes
                 //
