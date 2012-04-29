@@ -29,12 +29,40 @@ if (! class_exists('EGM_Actions')) {
          * method: wp_enqueue_scripts
          */
         function wp_enqueue_scripts() {
+            global $egm_plugin;
+            
+            // If Google API Key Is Set, Pass It
+            //
+            $egmAPIKey = 'key=' . $egm_plugin->settings->get_item('api_key');
+            if ($egmAPIKey === 'key=') {
+                $egmAPIKey = '';
+            }
+            
+            wp_register_script('google_maps',"http://maps.googleapis.com/maps/api/js?$egmAPIKey&sensor=false");
         } 
         
         /*************************************
          * method: shutdown
          */
         function shutdown() {
+            global $egm_plugin;
+            
+            // If we rendered a shortcode...
+            //
+            if ($egm_plugin->shortcode_was_rendered) {
+                
+                // Render Scripts
+                //
+                wp_enqueue_script('google_maps');                
+                
+                // Render Styles
+                //
+                $egm_plugin->themes->assign_user_stylesheet();                
+                           
+                // Force our scripts to load for badly behaved themes
+                //
+                wp_print_footer_scripts();                     
+            }             
         } 
     }
 }        

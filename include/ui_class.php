@@ -26,6 +26,8 @@ if (! class_exists('EGM_UserInterface')) {
          * method: render_shortcode
          */
         function render_shortcode() {
+            global $egm_plugin;
+            $egm_plugin->shortcode_was_rendered = true;
         }     
     }
 }        
