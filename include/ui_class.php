@@ -33,7 +33,7 @@ if (! class_exists('EGM_UserInterface')) {
             //
             $egmAttributes = shortcode_atts(
                 array(
-                    'size'      => '100%x100%',
+                    'size'      => '100%x400',
                     'address'   => '359 Wando Place Drive, Suite D, Mount Pleasant, SC 29464',
                     ), 
                 $params
