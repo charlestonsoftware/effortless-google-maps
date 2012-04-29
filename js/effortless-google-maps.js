@@ -4,7 +4,8 @@
  * Prep our map interface.
  *
  *****************************************************************/
-
+var map;
+ 
  /***************************
   * function InitializeTheMap()
   *
@@ -12,15 +13,52 @@
   *
   */
  function InitializeTheMap() {
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode(
+        {
+            'address': egm.address,
+            'partialmatch': true
+        }, 
+        geocodeResult
+        );
+ }
+
+ 
+ /***************************
+  * function geocodeResult()
+  *
+  * process a lat/long result
+  *
+  */
+function geocodeResult(results, status) {
+    if (status == 'OK' && results.length > 0) {
       var myOptions = {
-          center: new google.maps.LatLng(32.843014, -79.873036),
+          center: results[0].geometry.viewport.getCenter(),
           zoom: 10,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };        
-        var map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);     
- }
- 
- 
+      map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
+      addMarkerAtCenter(map);
+    } else {
+        alert("Address could not be processed: " + status);
+    }
+} 
+
+ /***************************
+  * function addMarkerAtCenter()
+  *
+  * process a lat/long result
+  *
+  */
+function addMarkerAtCenter() {
+    var marker = new google.maps.Marker(
+        {
+            position: map.getCenter(),
+            map: map
+        }
+        ); 
+}
+
 /* 
  * When the document has been loaded...
  *

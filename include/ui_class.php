@@ -45,9 +45,20 @@ if (! class_exists('EGM_UserInterface')) {
             $egmWidth  = EGM_UserInterface::CheckDimensions($egmWidth);
             $egmHeight = EGM_UserInterface::CheckDimensions($egmHeight);
             
+            array_merge($egmAttributes,
+                array(
+                    'width'     => $egmWidth,
+                    'height'    => $egmHeight,
+                    )
+                );
+            
             // Render the map div
             //
             print '<div id="map_canvas" style="width:'.$egmWidth.'; height:'.$egmHeight.'"></div>';
+            
+            // Lets get some variables into our script
+            //
+            wp_localize_script('effortless-gm','egm',$egmAttributes);              
         }
         
         /*************************************
