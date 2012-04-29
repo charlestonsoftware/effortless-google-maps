@@ -77,7 +77,12 @@ All major browsers should work, however Cyber Sprocket Labs only officially supp
 
 == Screenshots ==
 
-1. An Effortless Map
+1. A standard map.
+2. A tall map.
+3. Select a theme.
+4. Adding a shortcode.
+5. Settings page.
+
 
 == Changelog ==
 
