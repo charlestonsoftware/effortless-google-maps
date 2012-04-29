@@ -78,6 +78,7 @@ add_action('shutdown'           ,array('EGM_Actions','shutdown')                
 
 // Admin Actions
 //
+add_action('admin_init'         ,array('EGM_Admin_Actions','admin_init')        );
 add_action('admin_print_styles' ,array('EGM_Admin_Actions','admin_print_styles'));
 
 // Short Codes

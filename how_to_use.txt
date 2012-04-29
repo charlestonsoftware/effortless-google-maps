@@ -1,0 +1,39 @@
+<div class="optionpack_box" style="height:195px;">
+    <h1>Support Development</h1>
+    <p style="padding-left: 12px;">
+    <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5CFGV6A9NFRLL">
+    <img alt="" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif">
+    </a>
+    </p>
+    <h2 style="padding:0px; margin:0px;">Rate This Plugin!</h2>
+    <p>Don't forget <a href="http://wordpress.org/extend/plugins/google-maps-effortless/">rate us</a>!
+    Give us a chance to <a href="http://www.cybersprocket.com/contact-us/">address your concerns</a> if we didn't earn 5 stars.
+    </p>    
+</div>
+
+<div class="optionpack_box" style="height:195px;">
+    <h1>Feature Requests</h1>
+    <p style="padding-left: 12px;">
+    We do accept feature requests for all of our plugins, free ones included. The most requested features will make it into the next version.
+    </p>
+    <p style="padding-left: 12px;">
+    <strong>If you need a special feature NOW, <a href="http://www.cybersprocket.com/contact-us/">contact us</a>!</strong>
+    We offer expedited feature development.<br/>
+    Most features can be implemented in less than a week for $200!
+    </p>
+</div>
+
+<div style="clear:both;">
+    <h1>Using The Plugin</h1>
+    <p style="padding-left: 12px;">Go to your page or past where you want a map and enter the [effortless-gm] shortcode.</p>  
+    <p style="padding-left: 12px;">You'll probably not want to show the Cyber Sprocket headquarters address, so add your own like this:<br/>
+    <pre>
+    [effortless-gm address="1180 Seven Seas Drive, Lake Buena Vista, FL 32830"]
+    </pre>
+    </p>
+    <p style="padding-left: 12px;">
+    For more information, visit <a href="http://redmine.cybersprocket.com/projects/effortless-gm/wiki" target="cybersprocket">the Effortless Google Maps wiki</a>.
+    </p>
+</div>
+
+<h1>General Settings</h1>
