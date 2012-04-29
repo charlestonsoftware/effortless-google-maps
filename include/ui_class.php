@@ -35,6 +35,7 @@ if (! class_exists('EGM_UserInterface')) {
                 array(
                     'size'      => '100%x400',
                     'address'   => '359 Wando Place Drive, Suite D, Mount Pleasant, SC 29464',
+                    'zoom'      => '12'
                     ), 
                 $params
                 );
@@ -45,10 +46,16 @@ if (! class_exists('EGM_UserInterface')) {
             $egmWidth  = EGM_UserInterface::CheckDimensions($egmWidth);
             $egmHeight = EGM_UserInterface::CheckDimensions($egmHeight);
             
-            array_merge($egmAttributes,
+            // Keep stuff in range
+            //
+            $egmZoom = EGM_UserInterface::manageZoom($egmAttributes['zoom']);
+
+            // Prep our new stuff for passing to the script            
+            $egmAttributes = array_merge($egmAttributes,
                 array(
                     'width'     => $egmWidth,
                     'height'    => $egmHeight,
+                    'zoom'      => $egmZoom,
                     )
                 );
             
@@ -60,6 +67,32 @@ if (! class_exists('EGM_UserInterface')) {
             //
             wp_localize_script('effortless-gm','egm',$egmAttributes);              
         }
+        
+        /*************************************
+         * private method: manageZoom
+         *
+         * Allow for certain keywords to be used on zoom:
+         *      world = zoom way out
+         *      street = moderate zoom
+         *      house = tight zoom
+         *
+         */
+        function manageZoom($value) {
+            $newNumber = $value;
+            switch ($value) {
+                case 'world':
+                    $newNumber = '1';
+                    break;
+                case 'street':
+                    $newNumber='15';
+                    break;                    
+                case 'house':
+                    $newNumber='18';
+                    break;                    
+            }
+            return EGM_UserInterface::CleanNumber($newNumber,0,20);
+        }
+        
         
         /*************************************
          * private method: checkDimensions
@@ -85,6 +118,19 @@ if (! class_exists('EGM_UserInterface')) {
             }            
             return  $value . $suffix; 
         }
+        
+        /*************************************
+         * private method: cleanNumber
+         *
+         * Make sure we strip out all non-digits from the string.
+         *
+         * Then we check bounds as noted.
+         *
+         */
+        function cleanNumber($value,$min=0,$max=100) {
+            $value = preg_replace('/\D/','',$value);
+            return max(min($value,$max),$min);
+        }        
     }
 }        
      

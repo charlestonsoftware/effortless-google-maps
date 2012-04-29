@@ -34,7 +34,7 @@ function geocodeResult(results, status) {
     if (status == 'OK' && results.length > 0) {
       var myOptions = {
           center: results[0].geometry.viewport.getCenter(),
-          zoom: 10,
+          zoom: parseInt(egm.zoom),
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };        
       map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
