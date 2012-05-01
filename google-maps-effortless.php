@@ -3,7 +3,7 @@
 Plugin Name: Effortless Google Maps
 Plugin URI: http://www.cybersprocket.com/products/effortless-google-maps/
 Description: Put Google Maps on any page or post with a simple shortcode or widget.   100% free premium plugin. 
-Version: 0.2
+Version: 0.3
 Author: Cyber Sprocket Labs
 Author URI: http://www.cybersprocket.com
 License: GPL3
