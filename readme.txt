@@ -49,7 +49,7 @@ Give us a chance to <a href="http://www.cybersprocket.com/contact-us/">address y
 
 We do accept feature requests for all of our plugins, free ones included. The most requested features will make it into the next version.
     
-<strong>If you need a special feature NOW, <a href="http://www.cybersprocket.com/contact-us/">contact us</a>!</strong> We offer expedited feature development.<br/> Most features can be implemented in less than a week for $200!
+<strong>If you need a special feature NOW, <a href="http://www.cybersprocket.com/contact-us/">contact us</a>!</strong> We offer expedited feature development. Most features can be implemented in less than a week for $200!
 
 = Looking For Customized WordPress Plugins? =
 
