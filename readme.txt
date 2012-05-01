@@ -130,6 +130,10 @@ All major browsers should work, however Cyber Sprocket Labs only officially supp
 
 == Changelog ==
 
+= 0.3 (May, 2012) =
+
+* Improve on-page help info.
+
 = 0.2 (May, 2012) =
 
 * Shortcode output was premature, now renders in place.
