@@ -19,6 +19,25 @@ Putting Google Maps on your posts and pages has never been easier.  Use our shor
 * Shortcodes with options make it easy to customize
 * Widgets provided
 
+= Support Development =
+
+== Donate ==
+
+<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5CFGV6A9NFRLL">
+<img alt="" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif">
+</a>
+
+== Rate Us ==
+
+Please <a href="http://wordpress.org/extend/plugins/google-maps-effortless/">rate us</a>!
+Give us a chance to <a href="http://www.cybersprocket.com/contact-us/">address your concerns</a> if we didn't earn 5 stars.
+
+== Special Requests ==
+
+We do accept feature requests for all of our plugins, free ones included. The most requested features will make it into the next version.
+    
+<strong>If you need a special feature NOW, <a href="http://www.cybersprocket.com/contact-us/">contact us</a>!</strong> We offer expedited feature development.<br/> Most features can be implemented in less than a week for $200!
+
 = Looking For Customized WordPress Plugins? =
 
 If you are looking for custom WordPress development for your own plugins, give 
