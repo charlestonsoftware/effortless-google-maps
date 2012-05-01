@@ -32,10 +32,11 @@ if (! class_exists('EGM_UserInterface')) {
 
             // Set the attributes, default or passed in shortcode
             //
+            $defSize = $egm_plugin->settings->get_item('size','100%x400');
             $egmAttributes = shortcode_atts(
                 array(
                     'address'   => '359 Wando Place Drive, Suite D, Mount Pleasant, SC 29464',
-                    'size'      => '100%x400',
+                    'size'      => ((trim($defSize)=='')?'100%x400':$defSize),
                     'theme'     => $egm_plugin->settings->get_item('theme'),
                     'zoom'      => '12',
                     ), 

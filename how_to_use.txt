@@ -68,7 +68,3 @@
     For more information, visit <a href="http://redmine.cybersprocket.com/projects/effortless-gm/wiki" target="cybersprocket">the Effortless Google Maps wiki</a>.
     </p>
 </div>
-
-<h1>General Settings</h1>
-
-<p>The settings are the defaults for your maps as well as general settings like the Google API Key.  Click the help icon next to each setting to learn more.</p>

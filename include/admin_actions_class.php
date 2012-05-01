@@ -33,20 +33,40 @@ if (! class_exists('EGM_Admin_Actions')) {
             //
             $egm_plugin->settings->add_section(
                 array(
-                    'name'              => __('General Settings & Info', EGM_PREFIX),
+                    'name'              => __('Info', EGM_PREFIX),
                     'description'       => __(
                         $egm_plugin->helper->get_string_from_phpexec(EGM_PLUGINDIR.'how_to_use.txt'),EGM_PREFIX),
                     'start_collapsed'   => false,
                 )
+            );
+            
+            // Then add our sections
+            //
+            $egm_plugin->settings->add_section(
+                array(
+                    'name'              => __('General Settings', EGM_PREFIX),
+                    'description'       => __(
+                        $egm_plugin->helper->get_string_from_phpexec(EGM_PLUGINDIR.'general_settings.txt'),EGM_PREFIX),
+                    'start_collapsed'   => false,
+                )
             );        
+            
             $egm_plugin->settings->add_item(
-                    __('General Settings & Info', EGM_PREFIX), 
-                    'Google API Key', 
+                    __('General Settings', EGM_PREFIX), 
+                    __('Google API Key', EGM_PREFIX), 
                     'api_key', 
                     'text', 
                     false,
                     __('Your Google API Key. This is optional.', EGM_PREFIX)
            );
+            $egm_plugin->settings->add_item(
+                    __('General Settings', EGM_PREFIX), 
+                    __('Map Size', EGM_PREFIX), 
+                    'size', 
+                    'text', 
+                    false,
+                    __('The default size of the map(s).  If not set it will be 100%x400.', EGM_PREFIX)
+           );            
         }
         
         /*************************************

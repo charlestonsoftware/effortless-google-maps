@@ -133,6 +133,7 @@ All major browsers should work, however Cyber Sprocket Labs only officially supp
 = 0.3 (May, 2012) =
 
 * Improve on-page help info.
+* Ability to set default size for all maps on settings page.
 
 = 0.2 (May, 2012) =
 
