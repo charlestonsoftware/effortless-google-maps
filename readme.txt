@@ -108,6 +108,7 @@ All major browsers should work, however Cyber Sprocket Labs only officially supp
 = 0.2 (May, 2012) =
 
 * Shortcode output was premature, now renders in place.
+* Added basic widget.
 
 = 0.1 (May, 2012) =
 
