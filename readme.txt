@@ -42,7 +42,7 @@ If you like this plugin we hope that you will help support our continued develop
 
 = Rate Us =
 
-Please [rate us](http://wordpress.org/extend/plugins/google-maps-effortless/)rate us!
+Please [rate us](http://wordpress.org/extend/plugins/google-maps-effortless/)!
 Give us a chance to <a href="http://www.cybersprocket.com/contact-us/">address your concerns</a> if we didn't earn 5 stars.
 
 = Special Requests =
