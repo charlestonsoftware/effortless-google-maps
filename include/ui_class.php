@@ -61,13 +61,14 @@ if (! class_exists('EGM_UserInterface')) {
                     )
                 );
             
-            // Render the map div
-            //
-            print '<div id="map_canvas" style="width:'.$egmWidth.'; height:'.$egmHeight.'"></div>';
-            
             // Lets get some variables into our script
             //
-            wp_localize_script('effortless-gm','egm',$egmAttributes);              
+            wp_localize_script('effortless-gm','egm',$egmAttributes);
+            
+            // Render the map div
+            //
+            return '<div id="map_canvas" style="width:'.$egmWidth.'; height:'.$egmHeight.'"></div>';
+            
         }
         
         /*************************************
