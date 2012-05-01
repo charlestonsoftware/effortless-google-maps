@@ -24,16 +24,40 @@
 </div>
 
 <div style="clear:both;">
-    <h1>Using The Plugin</h1>
+    <h1>Putting Maps On Pages &amp; Posts</h1>
+    
+    <h2>The Basic Shortcode</h2>
     <p style="padding-left: 12px;">Go to your page or past where you want a map and enter the [effortless-gm] shortcode.</p>  
     <p style="padding-left: 12px;">You'll probably not want to show the Cyber Sprocket headquarters address, so add your own like this:<br/>
     <pre>
     [effortless-gm address="1180 Seven Seas Drive, Lake Buena Vista, FL 32830"]
     </pre>
     </p>
+    
+    <h2>Setting The Map Size</h2>
+    <p style="padding-left: 12px;">Use the size option in the shortcode.  The setting is in "&lt;width&gt;x&lt;height&gt;" format.
+    The width can be in either pixel format:<br/>
+    <pre>
+    [effortless-gm address="1180 Seven Seas Drive, Lake Buena Vista, FL 32830" size="200x200"]
+    </pre>
+    </p>
+    <p style="padding-left: 12px;">or percentage format:<br/>
+    <pre>
+    [effortless-gm address="1180 Seven Seas Drive, Lake Buena Vista, FL 32830" size="80%x80%"]
+    </pre>    
+    </p>
+    <p style="padding-left: 12px;">or a combination of both<br/>
+    <pre>
+    [effortless-gm address="1180 Seven Seas Drive, Lake Buena Vista, FL 32830" size="80%x400"]
+    </pre>        
+    </p>    
+    
+    <h2>Online Documentation</h2>    
     <p style="padding-left: 12px;">
     For more information, visit <a href="http://redmine.cybersprocket.com/projects/effortless-gm/wiki" target="cybersprocket">the Effortless Google Maps wiki</a>.
     </p>
 </div>
 
 <h1>General Settings</h1>
+
+<p>The settings are the defaults for your maps as well as general settings like the Google API Key.  Click the help icon next to each setting to learn more.</p>
