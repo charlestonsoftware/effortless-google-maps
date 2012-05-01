@@ -25,11 +25,11 @@ if (! class_exists('EGM_UserInterface')) {
         /*************************************
          * method: render_shortcode
          */
-        function render_shortcode($params) {
+        function render_shortcode($params=null) {
             global $egm_plugin, $egmAttributes;
             
             $egm_plugin->shortcode_was_rendered = true;
-            
+
             // Set the attributes, default or passed in shortcode
             //
             $egmAttributes = shortcode_atts(

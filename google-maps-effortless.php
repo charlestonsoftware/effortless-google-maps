@@ -69,11 +69,13 @@ include_once(EGM_PLUGINDIR . 'include/config.php'   );
 require_once(EGM_PLUGINDIR . 'include/actions_class.php');
 require_once(EGM_PLUGINDIR . 'include/admin_actions_class.php');
 require_once(EGM_PLUGINDIR . 'include/ui_class.php');
+require_once(EGM_PLUGINDIR . 'include/egm_widget_class.php');
 
 
 // Regular Actions
 //
 add_action('wp_enqueue_scripts' ,array('EGM_Actions','wp_enqueue_scripts')      );
+add_action( 'widgets_init', create_function( '', 'register_widget( "egmWidget" );' ) );
 add_action('shutdown'           ,array('EGM_Actions','shutdown')                );
 
 // Admin Actions
