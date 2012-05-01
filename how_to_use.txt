@@ -52,6 +52,17 @@
     </pre>        
     </p>    
     
+    <h2>Other Options</h2>
+    <p style="padding-left: 12px;">We dont' want to clutter the settings page with a list of ALL the options, so here is the punch list.  
+    Visit <a href="http://redmine.cybersprocket.com/projects/effortless-gm/wiki" target="cybersprocket">the Effortless Google Maps wiki</a> for more details.
+    <ul style="padding-left: 24px;">
+        <li><strong>address</strong> - where to center the map and drop the marker</li>
+        <li><strong>size</strong> - the width and height of the map</li>
+        <li><strong>theme</strong> - set the theme for this map only (default: selection from settings page)</li>
+        <li><strong>zoom</strong> - how close to zoom in (default: 12 which is "street" level)</li>
+    </ul>
+    </p>
+    
     <h2>Online Documentation</h2>    
     <p style="padding-left: 12px;">
     For more information, visit <a href="http://redmine.cybersprocket.com/projects/effortless-gm/wiki" target="cybersprocket">the Effortless Google Maps wiki</a>.
