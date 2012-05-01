@@ -5,7 +5,7 @@ Donate link: http://www.cybersprocket.com/products/effortless-google-maps/
 Tags: google maps
 Requires at least: 3.3
 Tested up to: 3.3.2
-Stable tag: 0.1
+Stable tag: 0.2
 
 Put Google Maps on any page or post with a simple shortcode or widget.   100% free premium plugin.
 
@@ -85,6 +85,10 @@ All major browsers should work, however Cyber Sprocket Labs only officially supp
 
 
 == Changelog ==
+
+= 0.2 (May, 2012) =
+
+* Shortcode output was premature, now renders in place.
 
 = 0.1 (May, 2012) =
 
