@@ -15,7 +15,7 @@ class egmWidget extends WP_Widget {
 	public function __construct() {
 		parent::__construct(
 	 		EGM_PREFIX.'_widget', // Base ID
-			__('Extended Google Map',EGM_PREFIX), // Name
+			__('Effortless Google Map',EGM_PREFIX), // Name
 			array( 
 			    'description' => __( 'Add a Google Map to any widget box location.', EGM_PREFIX ), 
 			    ) 
@@ -26,9 +26,11 @@ class egmWidget extends WP_Widget {
 		print $this->formatFormEntry($instance, 'address' , __( 'Address:', EGM_PREFIX)   ,''); 
 		print $this->formatFormEntry($instance, 'size'    , __( 'Size:', EGM_PREFIX)      ,''); 
 		print $this->formatFormEntry($instance, 'zoom'    , __( 'Zoom:', EGM_PREFIX)      ,''); 
+		print $this->formatFormEntry($instance, 'mapID'   , __( 'mapID', EGM_PREFIX)      ,'widget');
     }
 
 	public function update( $new_instance, $old_instance ) {
+		
 		return $new_instance;
 	}
 
@@ -36,6 +38,11 @@ class egmWidget extends WP_Widget {
 	    if (isset($instance['address']) && (trim($instance['address'])=='')) {
 	        unset($instance['address']);
 	    }
+	    
+	    if (isset($instance['mapID']) && (trim($instance['mapID']) == '')) {
+	    	    unset($instance['mapID']);
+	    }
+	    	
 		print EGM_UserInterface::render_shortcode($instance);
 	}
 	

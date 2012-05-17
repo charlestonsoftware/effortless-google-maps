@@ -26,7 +26,7 @@ if (! class_exists('EGM_UserInterface')) {
          * method: render_shortcode
          */
         function render_shortcode($params=null) {
-            global $egm_plugin, $egmAttributes;
+            global $egm_plugin, $egmAttributes, $egmMaps, $egmIdCounter;
             
             $egm_plugin->shortcode_was_rendered = true;
 
@@ -35,7 +35,7 @@ if (! class_exists('EGM_UserInterface')) {
             $defSize = $egm_plugin->settings->get_item('size','100%x400');
             $egmAttributes = shortcode_atts(
                 array(
-                    'address'   => '359 Wando Place Drive, Suite D, Mount Pleasant, SC 29464',
+                    'address'   => $egm_plugin->settings->get_item('address'),
                     'size'      => ((trim($defSize)=='')?'100%x400':$defSize),
                     'theme'     => $egm_plugin->settings->get_item('theme'),
                     'zoom'      => '12',
@@ -48,6 +48,11 @@ if (! class_exists('EGM_UserInterface')) {
             list($egmWidth,$egmHeight) = (split('x',$egmAttributes['size']));
             $egmWidth  = EGM_UserInterface::CheckDimensions($egmWidth);
             $egmHeight = EGM_UserInterface::CheckDimensions($egmHeight);
+            
+            //set the egmID
+            //
+            if (!isSet($egmIdCounter)) $egmIdCounter = 0;
+            $egmID = $egmIdCounter++;
             
             // Get the type of view
             //
@@ -64,16 +69,20 @@ if (! class_exists('EGM_UserInterface')) {
                     'height'    => $egmHeight,
                     'zoom'      => $egmZoom,
                     'view'      => $egmView,
+                    'id'	=> $egmID,
                     )
                 );
             
+            //adds the map to the map list
+            $egmMaps[] = $egmAttributes;
+            
             // Lets get some variables into our script
             //
-            wp_localize_script('effortless-gm','egm',$egmAttributes);
+            wp_localize_script('effortless-gm','egmMaps',$egmMaps);
             
             // Render the map div
             //
-            return '<div id="map_canvas" style="width:'.$egmWidth.'; height:'.$egmHeight.'"></div>';
+            return '<div id="canvas'.$egmID.'" style="width:'.$egmWidth.'; height:'.$egmHeight.'"></div>';
             
         }
         

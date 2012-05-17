@@ -130,6 +130,10 @@ All major browsers should work, however Cyber Sprocket Labs only officially supp
 
 == Changelog ==
 
+= 0.5 (May, 2012) =
+
+* Now supports multiple maps via the widgets and shortcode.
+
 = 0.4 (May, 2012) =
 
 * Ability to set the default map type

@@ -73,7 +73,7 @@ if (! class_exists('EGM_Admin_Actions')) {
 	   	   'view',
 	   	   'list',
 	   	   false,
-	   	   __('The default address (currently overrides address specified in shortcode)', EGM_PREFIX),
+	   	   __('The type of map to display.', EGM_PREFIX),
 	   	   array(
 	   	   	   'Terrain View' => 'google.maps.MapTypeId.TERRAIN',
 	   	   	   'Road View' => 'google.maps.MapTypeId.ROADMAP',
@@ -81,6 +81,16 @@ if (! class_exists('EGM_Admin_Actions')) {
 	   	   	   'Hybrid View' => 'google.maps.MapTypeId.HYBRID'
 	   	   )
 	   );
+	   $egm_plugin->settings->add_item(
+	   	   __('General Settings', EGM_PREFIX),
+	   	   __('Default View', EGM_PREFIX),
+	   	   'address',
+	   	   'text',
+	   	   false,
+	   	   __('The default address.', EGM_PREFIX),
+	   	   '359 Wando Place Drive, Suite D, Mount Pleasant, SC 29464'
+	   );
+	   	   
         }
         
         /*************************************
