@@ -16,6 +16,65 @@ var markers;
   */
   var csl = {
   	  
+  	  Animation: { Bounce: 1, Drop: 2 },
+  	  
+  	  Marker: function (animationType, map, title, iconUrl, position) {
+  	  	  this.__animationType = animationType;
+  	  	  this.__map = map;
+  	  	  this.__title = title;
+  	  	  this.__icon = iconUrl;
+  	  	  this.__position = position;
+  	  	  this.__gmarker = null;
+  	  	  
+  	  	  this.__init = function() {
+  	  	  	 this.__gmarker = new google.maps.Marker(
+  	  	  	  	  {
+  	  	  	  	  	  position: this.__position,
+  	  	  	  	  	  map: this.__map.gmap,
+  	  	  	  	  	  animation: this.__animationType,
+  	  	  	  	  	  position: this.__position,
+  	  	  	  	  	  title: this.__title,
+  	  	  	  	  });
+  	  	  }
+  	  	  
+  	  	  this.__init();
+  	  },
+  	  
+  	  Info: function (content, position) {
+  	  	  this.__content = content;
+  	  	  this.__position = position;
+  	  	  
+  	  	  this.__anchor = null;
+  	  	  this.__gwindow = null;
+  	  	  this.__gmap = null;
+  	  	  
+  	  	  this.openWithNewContent = function(map, object, content) {
+  	  	  	  this.__content = content;
+  	  	  	  this.__gwindow = setContent = this.__content;
+  	  	  	  this.open(map, object);
+  	  	  }
+  	  	  
+  	  	  this.open = function(map, object) {
+  	  	  	  this.__gmap = map.gmap;
+  	  	  	  this.__anchor = object;
+  	  	  	  this.__gwindow.open(this.__gmap, this.__anchor);
+  	  	  }
+  	  	  
+  	  	  this.close = function() {
+  	  	  	  this.__gwindow.close();
+  	  	  }
+  	  	  
+  	  	  this.__init = function() {
+  	  	  	  this.__gwindow = new google.maps.InfoWindow(
+  	  	  	  	  {
+  	  	  	  	  	  content: this.__content,
+  	  	  	  	  	  position: this.__position
+  	  	  	  	  });
+  	  	  }
+  	  	  
+  	  	  this.__init();
+  	  },
+  	  
   	  /***************************
   	  	  * Map Object
   	  	  * usage:
@@ -33,6 +92,17 @@ var markers;
   	  	  this.view = null;
   	  	  this.canvasID = null;
   	  	  this.title = null;
+  	  	  this.draggable = true;
+  	  	  this.overviewMapControl = true;
+  	  	  this.panControl = true;
+  	  	  this.rotateControl = true;
+  	  	  this.scaleControl = true;
+  	  	  this.scrollwheel = true;
+  	  	  this.streetViewEnabled = true;
+  	  	  this.tilt = 45;
+  	  	  this.zoomAllowed = true;
+  	  	  this.disableDefaultUI = false;
+  	  	  this.zoomStyle = 0; // 0 = default, 1 = small, 2 = large
   	  	  
   	  	  //gmap set variables
   	  	  this.options = null;
@@ -72,12 +142,7 @@ var markers;
   	  	  * returns: none
   	  	  */
   	  	  this.addMarkerAtCenter = function() {
-  	  	  	  this.centerMarker = new google.maps.Marker(
-  	  	  	  	  {
-  	  	  	  	  	  position: this.gmap.getCenter(),
-  	  	  	  	  	  map: this.gmap
-  	  	  	  	  }
-  	  	  	   );
+  	  	  	  this.centerMarker = new csl.Marker(csl.Animation.Drop, this, "ME!", null, this.gmap.getCenter());
   	  	  }
   	  	  
   	  	  /***************************
