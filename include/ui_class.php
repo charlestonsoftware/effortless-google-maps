@@ -49,6 +49,10 @@ if (! class_exists('EGM_UserInterface')) {
             $egmWidth  = EGM_UserInterface::CheckDimensions($egmWidth);
             $egmHeight = EGM_UserInterface::CheckDimensions($egmHeight);
             
+            // Get the type of view
+            //
+            $egmView = $egm_plugin->settings->get_item('view');
+                   
             // Keep stuff in range
             //
             $egmZoom = EGM_UserInterface::manageZoom($egmAttributes['zoom']);
@@ -59,6 +63,7 @@ if (! class_exists('EGM_UserInterface')) {
                     'width'     => $egmWidth,
                     'height'    => $egmHeight,
                     'zoom'      => $egmZoom,
+                    'view'      => $egmView,
                     )
                 );
             

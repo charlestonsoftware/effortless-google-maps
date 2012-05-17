@@ -66,7 +66,21 @@ if (! class_exists('EGM_Admin_Actions')) {
                     'text', 
                     false,
                     __('The default size of the map(s).  If not set it will be 100%x400.', EGM_PREFIX)
-           );            
+           );
+	   $egm_plugin->settings->add_item(
+	   	   __('General Settings', EGM_PREFIX),
+	   	   __('Default View', EGM_PREFIX),
+	   	   'view',
+	   	   'list',
+	   	   false,
+	   	   __('The default address (currently overrides address specified in shortcode)', EGM_PREFIX),
+	   	   array(
+	   	   	   'Terrain View' => 'google.maps.MapTypeId.TERRAIN',
+	   	   	   'Road View' => 'google.maps.MapTypeId.ROADMAP',
+	   	   	   'Satellite View' => 'google.maps.MapTypeId.SATELLITE',
+	   	   	   'Hybrid View' => 'google.maps.MapTypeId.HYBRID'
+	   	   )
+	   );
         }
         
         /*************************************

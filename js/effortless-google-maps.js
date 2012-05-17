@@ -35,7 +35,7 @@ function geocodeResult(results, status) {
       var myOptions = {
           center: results[0].geometry.viewport.getCenter(),
           zoom: parseInt(egm.zoom),
-          mapTypeId: google.maps.MapTypeId.ROADMAP
+          mapTypeId: eval(egm.view)
         };        
       map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
       addMarkerAtCenter(map);
