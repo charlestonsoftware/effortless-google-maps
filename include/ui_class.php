@@ -39,6 +39,7 @@ if (! class_exists('EGM_UserInterface')) {
                     'size'      => ((trim($defSize)=='')?'100%x400':$defSize),
                     'theme'     => $egm_plugin->settings->get_item('theme'),
                     'zoom'      => '12',
+                    'view'	=> $egm_plugin->settings->get_item('view')
                     ), 
                 $params
                 );
@@ -68,7 +69,6 @@ if (! class_exists('EGM_UserInterface')) {
                     'width'     => $egmWidth,
                     'height'    => $egmHeight,
                     'zoom'      => $egmZoom,
-                    'view'      => $egmView,
                     'id'	=> $egmID,
                     )
                 );

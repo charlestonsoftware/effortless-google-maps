@@ -25,8 +25,7 @@ class egmWidget extends WP_Widget {
  	public function form( $instance ) {
 		print $this->formatFormEntry($instance, 'address' , __( 'Address:', EGM_PREFIX)   ,''); 
 		print $this->formatFormEntry($instance, 'size'    , __( 'Size:', EGM_PREFIX)      ,''); 
-		print $this->formatFormEntry($instance, 'zoom'    , __( 'Zoom:', EGM_PREFIX)      ,''); 
-		print $this->formatFormEntry($instance, 'mapID'   , __( 'mapID', EGM_PREFIX)      ,'widget');
+		print $this->formatFormEntry($instance, 'zoom'    , __( 'Zoom:', EGM_PREFIX)      ,'');
     }
 
 	public function update( $new_instance, $old_instance ) {
@@ -37,10 +36,6 @@ class egmWidget extends WP_Widget {
 	public function widget( $args, $instance ) {
 	    if (isset($instance['address']) && (trim($instance['address'])=='')) {
 	        unset($instance['address']);
-	    }
-	    
-	    if (isset($instance['mapID']) && (trim($instance['mapID']) == '')) {
-	    	    unset($instance['mapID']);
 	    }
 	    	
 		print EGM_UserInterface::render_shortcode($instance);

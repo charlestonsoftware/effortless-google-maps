@@ -9,20 +9,32 @@ var opts;
 var markers;
 
 /***************************
-  * class MapBuilder
+  * Cyber Sprocket Labs Namespace
   *
-  * Setup the map settings and get id rendered.
+  * For stuff to do awesome stuff
   *
   */
   var csl = {
+  	  
+  	  /***************************
+  	  	  * Map Object
+  	  	  * usage:
+  	  	  * create a google maps object linked to a map/canvas id
+  	  	  * parameters:
+  	  	  * 	aMapNumber: the id/canvas of the map object to load from php side
+  	  	  */
   	  Map: function(aMapNumber) {
+  	  	  //private: map number to look up at init
   	  	  this.__mapNumber = aMapNumber;
+  	  	  
+  	  	  //php passed vars set in init
   	  	  this.address = null;
   	  	  this.zoom = null;
   	  	  this.view = null;
   	  	  this.canvasID = null;
   	  	  this.title = null;
   	  	  
+  	  	  //gmap set variables
   	  	  this.options = null;
   	  	  this.gmap = null;
   	  	  this.centerMarker = null;
@@ -42,7 +54,7 @@ var markers;
   	  	  	  	  this.options = {
   	  	  	  	  	  center: results[0].geometry.viewport.getCenter(),
   	  	  	  	  	  zoom: parseInt(this.zoom),
-  	  	  	  	  	  MapTypeId: eval(this.view)
+  	  	  	  	  	  MapTypeId: this.view
   	  	  	  	  };
   	  	  	  	  this.gmap = new google.maps.Map(document.getElementById("canvas" + this.canvasID), this.options);
   	  	  	  	  this.addMarkerAtCenter();
@@ -50,6 +62,15 @@ var markers;
   	  	  	  	  alert("Address could not be processed: " + status);
   	  	  	  }
   	  	  }
+  	  	  
+  	  	  /***************************
+  	  	  * function: addMarkerAtCenter
+  	  	  * usage:
+  	  	  * Puts a pretty marker right smack in the middle
+  	  	  * parameters:
+  	  	  * 	none
+  	  	  * returns: none
+  	  	  */
   	  	  this.addMarkerAtCenter = function() {
   	  	  	  this.centerMarker = new google.maps.Marker(
   	  	  	  	  {
@@ -89,12 +110,12 @@ var markers;
   	  	  	  	  {
   	  	  	  	  	  'address': this.address
   	  	  	  	  },
-  	  	  	  	  function (result, status) {
-  	  	  	  	  _this.__geocodeResult.call(_this, result, status); }
+  	  	  	  	  function (result, status) {							// This is a little complicated, 
+  	  	  	  	  _this.__geocodeResult.call(_this, result, status); }	// but it forces the callback to keep its scope
   	  	  	  );
   	  	  }
   	  	  
-  	  	  //dumb browser quirk trick ...
+  	  	  //dumb browser quirk trick ... wasted two hours on that one
   	  	  this.__init();
   	  }
   }

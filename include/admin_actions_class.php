@@ -75,10 +75,10 @@ if (! class_exists('EGM_Admin_Actions')) {
 	   	   false,
 	   	   __('The type of map to display.', EGM_PREFIX),
 	   	   array(
-	   	   	   'Terrain View' => 'google.maps.MapTypeId.TERRAIN',
-	   	   	   'Road View' => 'google.maps.MapTypeId.ROADMAP',
-	   	   	   'Satellite View' => 'google.maps.MapTypeId.SATELLITE',
-	   	   	   'Hybrid View' => 'google.maps.MapTypeId.HYBRID'
+	   	   	   'Terrain View' => 'terrain',
+	   	   	   'Road View' => 'roadmap',
+	   	   	   'Satellite View' => 'satellite',
+	   	   	   'Hybrid View' => 'hybrid'
 	   	   )
 	   );
 	   $egm_plugin->settings->add_item(
