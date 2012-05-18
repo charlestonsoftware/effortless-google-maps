@@ -16,8 +16,24 @@ var markers;
   */
   var csl = {
   	  
-  	  Animation: { Bounce: 1, Drop: 2 },
+		/***************************
+  	  	 * Animation enum technically
+  	  	 * usage:
+  	  	 * 		Animation enumeration 
+  	  	 */
+  	  Animation: { Bounce: 1, Drop: 2, None: 0 },
   	  
+	  /***************************
+  	  	  * Marker for google maps
+  	  	  * usage:
+  	  	  * create a google maps marker
+  	  	  * parameters:
+  	  	  * 	animationType: The Animation type to do the animation
+		  *		map: the csl.Map type to put it on
+		  *		title: the title of the marker for mouse over
+		  *		iconUrl: todo: load a custom icon, null for default
+		  *		position: the lat/long to put the marker at
+  	  	  */
   	  Marker: function (animationType, map, title, iconUrl, position) {
   	  	  this.__animationType = animationType;
   	  	  this.__map = map;
@@ -40,7 +56,14 @@ var markers;
   	  	  this.__init();
   	  },
   	  
-  	  Info: function (content, position) {
+	  /***************************
+  	  	  * Popup info window Object
+  	  	  * usage:
+  	  	  * create a google info window
+  	  	  * parameters:
+  	  	  * 	content: the content to show by default
+  	  	  */
+  	  Info: function (content) {
   	  	  this.__content = content;
   	  	  this.__position = position;
   	  	  
@@ -68,7 +91,6 @@ var markers;
   	  	  	  this.__gwindow = new google.maps.InfoWindow(
   	  	  	  	  {
   	  	  	  	  	  content: this.__content,
-  	  	  	  	  	  position: this.__position
   	  	  	  	  });
   	  	  }
   	  	  
@@ -85,23 +107,25 @@ var markers;
   	  Map: function(aMapNumber) {
   	  	  //private: map number to look up at init
   	  	  this.__mapNumber = aMapNumber;
+		  
+		  //function callbacks
+		  this.tilesLoaded = null;
   	  	  
   	  	  //php passed vars set in init
-  	  	  this.address = null;
-  	  	  this.zoom = null;
-  	  	  this.view = null;
+  	  	  this.address = null; //y
+  	  	  this.zoom = null; //y
+  	  	  this.view = null; //y
   	  	  this.canvasID = null;
-  	  	  this.title = null;
-  	  	  this.draggable = true;
-  	  	  this.overviewMapControl = true;
-  	  	  this.panControl = true;
-  	  	  this.rotateControl = true;
-  	  	  this.scaleControl = true;
-  	  	  this.scrollwheel = true;
-  	  	  this.streetViewEnabled = true;
-  	  	  this.tilt = 45;
-  	  	  this.zoomAllowed = true;
-  	  	  this.disableDefaultUI = false;
+  	  	  this.draggable = true; //n
+  	  	  this.overviewMapControl = true; //n
+  	  	  this.panControl = true; //n
+  	  	  this.rotateControl = true; //n
+  	  	  this.scaleControl = true; //n
+  	  	  this.scrollwheel = true; //n
+  	  	  this.streetViewEnabled = true; //n
+  	  	  this.tilt = 45; //n
+  	  	  this.zoomAllowed = true; //n
+  	  	  this.disableDefaultUI = false; //n
   	  	  this.zoomStyle = 0; // 0 = default, 1 = small, 2 = large
   	  	  
   	  	  //gmap set variables
@@ -112,7 +136,7 @@ var markers;
   	  	  /***************************
   	  	  * function: __geocodeResult
   	  	  * usage:
-  	  	  * Callback from google so we can update our map
+		  * Called when the geocode is complete
   	  	  * parameters:
   	  	  * 	results: some usable results (see google api reference)
   	  	  *		status:  the status of the geocode (ok means g2g)
@@ -124,15 +148,56 @@ var markers;
   	  	  	  	  this.options = {
   	  	  	  	  	  center: results[0].geometry.viewport.getCenter(),
   	  	  	  	  	  zoom: parseInt(this.zoom),
-  	  	  	  	  	  MapTypeId: this.view
+  	  	  	  	  	  MapTypeId: this.view,
+  	  	  	  	  	  disableDefaultUI: this.disableDefaultUI
   	  	  	  	  };
   	  	  	  	  this.gmap = new google.maps.Map(document.getElementById("canvas" + this.canvasID), this.options);
+				  
+				  //this forces any bad css from themes to fix the "gray bar" issue by setting the css max-width to none
+				  var _this = this;
+				  google.maps.event.addListener(this.gmap, 'bounds_changed', function() {
+					_this.__waitForTileLoad.call(_this);
+				});
+				  
+				  
   	  	  	  	  this.addMarkerAtCenter();
   	  	  	  } else {
   	  	  	  	  alert("Address could not be processed: " + status);
   	  	  	  }
   	  	  }
   	  	  
+		  /***************************
+  	  	  * function: __waitForTileLoad
+  	  	  * usage:
+		  * Notifies as the map changes that we'd like to be nofified when the tiles are completely loaded
+  	  	  * parameters:
+  	  	  * 	none
+  	  	  * returns: none
+  	  	  */
+		  this.__waitForTileLoad = function() {
+			var _this = this;
+			if (this.__tilesLoaded == null)
+			{
+				this.__tilesLoaded = google.maps.event.addListener(this.gmap, 'tilesloaded', function() {
+					_this.__tilesAreLoaded.call(_this);
+				});
+			}
+		  }
+		  
+		  /***************************
+  	  	  * function: __tilesAreLoaded
+  	  	  * usage:
+		  * All the tiles are loaded, so fix their css
+  	  	  * parameters:
+  	  	  * 	none
+  	  	  * returns: none
+  	  	  */
+		  this.__tilesAreLoaded = function() {
+			jQuery(canvas0).find('img').css({'max-width': 'none'});
+			google.maps.event.removeListener(this.__tilesLoaded);
+			this.__tilesLoaded = null;
+		  }
+		  
   	  	  /***************************
   	  	  * function: addMarkerAtCenter
   	  	  * usage:
@@ -157,6 +222,7 @@ var markers;
   	  	  	  this.zoom = egmMaps[this.__mapNumber].zoom;
   	  	  	  this.view = egmMaps[this.__mapNumber].view;
   	  	  	  this.canvasID = egmMaps[this.__mapNumber].id;
+  	  	  	  this.disableDefaultUI = egmMaps[this.__mapNumber].disableUI;
   	  	  }
   	  	  
   	  	  /***************************
@@ -169,7 +235,6 @@ var markers;
   	  	  */
   	  	  this.doGeocode = function() {
   	  	  	  var geocoder = new google.maps.Geocoder();
-  	  	  	  console.log("Geocoding: " + this.address);
   	  	  	  var _this = this;
   	  	  	  geocoder.geocode(
   	  	  	  	  {
