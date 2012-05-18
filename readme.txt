@@ -5,13 +5,17 @@ Donate link: http://www.cybersprocket.com/products/effortless-google-maps/
 Tags: google maps
 Requires at least: 3.3
 Tested up to: 3.3.2
-Stable tag: 0.5
+Stable tag: 0.4
 
-Put Google Maps on any page or post with a simple shortcode or widget.   100% free premium plugin.
+Put an unlimited amount of Google Maps on any page or post with a simple shortcode or widget.   100% free premium plugin.
 
 == Description ==
 
 Putting Google Maps on your posts and pages has never been easier.  Use our shortocde or widgets to create the map.  Quick and simple shortcode attributes allow you to customize with ease.
+
+Are you interested in putting multiple locations on a map?
+
+Check out our other plugin, Store Locator Plus! (link to http://wordpress.org/extend/plugins/store-locator-le/) With features like multiple location support and individual pages for your locations -- this plugin can handle all of your mapping needs.
 
 = Features =
 
@@ -21,6 +25,7 @@ Putting Google Maps on your posts and pages has never been easier.  Use our shor
 * Works on all modern web browsers.
 * Multiple plugin themes available.  These themes tweak the look, position, and other style attributes of the "map box" without affecting the rest of the site.
 * Create your own custom plugin themes.   Tweak the CSS and easily re-use the style on multiple pages, or create a unique style for each page.
+* Multiple maps
 
 = Our Philosophy =
 
@@ -130,7 +135,7 @@ All major browsers should work, however Cyber Sprocket Labs only officially supp
 
 == Changelog ==
 
-= 0.5 (May, 2012) =
+= 0.4 (May, 2012) =
 
 * Now supports multiple maps via the widgets and shortcode.
 * Can set default map type in shortcode
