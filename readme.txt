@@ -11,11 +11,13 @@ Put an unlimited amount of Google Maps on any page or post with a simple shortco
 
 == Description ==
 
-Putting Google Maps on your posts and pages has never been easier.  Use our shortocde or widgets to create the map.  Quick and simple shortcode attributes allow you to customize with ease.
+Putting Google Maps on your posts and pages has never been easier.  Use our shortocde or widgets to create a map.  Quick and simple shortcode attributes allow you to customize with ease.
+
+= Multiple Locations =
 
 Are you interested in putting multiple locations on a map?
 
-Check out our other plugin, Store Locator Plus! (link to http://wordpress.org/extend/plugins/store-locator-le/) With features like multiple location support and individual pages for your locations -- this plugin can handle all of your mapping needs.
+Check out our other plugin, [Store Locator Plus](http://wordpress.org/extend/plugins/store-locator-le/)! With features like multiple location support and individual pages for your locations -- this plugin can handle all of your mapping needs.
 
 = Features =
 
@@ -26,16 +28,6 @@ Check out our other plugin, Store Locator Plus! (link to http://wordpress.org/ex
 * Multiple plugin themes available.  These themes tweak the look, position, and other style attributes of the "map box" without affecting the rest of the site.
 * Create your own custom plugin themes.   Tweak the CSS and easily re-use the style on multiple pages, or create a unique style for each page.
 * Multiple maps
-
-= Our Philosophy =
-
-Like all of our plugins, we strive to create code the runs efficiently and without bugs. We feel well-written plugins are few and far between. While there are plenty of plugins that look nice, far too many of those plugins, including the "cool shiny ones" have way to many hidden problems. We have found that over 90% of the plugins available on the WordPress plugin directory generate dozens, if not hundreds, of warnings and errors when we turn off the "hide all the problems" settings in PHP.
-
-These hidden problems impact memory usage, fill up disk space, and reduce performance via the typical default logging settings on most web hosts. While you may not see the errors on your WordPress site, they are still being tracked. The more errors, the more disk I/O, the slower the app.
-
-During our 20+ years of software development, we have also found that leaving "innocuous" warnings in place tends to lead to trouble further down the road. Warnings today often become errors tomorrow. Many programming languages, PHP included, continue to tighten security and close loopholes that are typically found living near all those warning messages. Some warnings are also telling you to "change this now, it will be gone tomorrow". Eventually tomorrow will come.
-
-While our plugins may not be the prettiest on the block, we do try to make sure that all the hidden stuff you don't see is designed as well as it can be. To sum it all up, we like to write plugins that last. We hope you appreciate our work.
 
 = Support Development =
 
@@ -64,6 +56,16 @@ our existing framework for WordPress applications which reduces development time
 and costs.
 
 Learn more at: http://www.cybersprocket.com/services/wordpress-developers/
+
+= Our Philosophy =
+
+Like all of our plugins, we strive to create code the runs efficiently and without bugs. We feel well-written plugins are few and far between. While there are plenty of plugins that look nice, far too many of those plugins, including the "cool shiny ones" have way to many hidden problems. We have found that over 90% of the plugins available on the WordPress plugin directory generate dozens, if not hundreds, of warnings and errors when we turn off the "hide all the problems" settings in PHP.
+
+These hidden problems impact memory usage, fill up disk space, and reduce performance via the typical default logging settings on most web hosts. While you may not see the errors on your WordPress site, they are still being tracked. The more errors, the more disk I/O, the slower the app.
+
+During our 20+ years of software development, we have also found that leaving "innocuous" warnings in place tends to lead to trouble further down the road. Warnings today often become errors tomorrow. Many programming languages, PHP included, continue to tighten security and close loopholes that are typically found living near all those warning messages. Some warnings are also telling you to "change this now, it will be gone tomorrow". Eventually tomorrow will come.
+
+While our plugins may not be the prettiest on the block, we do try to make sure that all the hidden stuff you don't see is designed as well as it can be. To sum it all up, we like to write plugins that last. We hope you appreciate our work.
 
 = Related Links =
 
@@ -124,6 +126,10 @@ If you create a translation file please send it to us and we'll include it in th
 
 All major browsers should work, however Cyber Sprocket Labs only officially supports the current and prior releases of Internet Explorer, Firefox, Chrome, and Safari.
 
+== Upgrade Notice ==
+
+Multiple maps are now supported on the same page.
+
 == Screenshots ==
 
 1. A standard map.
@@ -135,7 +141,7 @@ All major browsers should work, however Cyber Sprocket Labs only officially supp
 
 == Changelog ==
 
-= 0.4 (May, 2012) =
+= 0.4 (May 18th, 2012) =
 
 * Now supports multiple maps via the widgets and shortcode.
 * Can set default map type in shortcode
