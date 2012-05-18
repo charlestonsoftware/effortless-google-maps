@@ -207,7 +207,7 @@ var markers;
   	  	  * returns: none
   	  	  */
   	  	  this.addMarkerAtCenter = function() {
-  	  	  	  this.centerMarker = new csl.Marker(csl.Animation.Drop, this, "ME!", null, this.gmap.getCenter());
+  	  	  	  this.centerMarker = new csl.Marker(csl.Animation.Drop, this, "", null, this.gmap.getCenter());
   	  	  }
   	  	  
   	  	  /***************************
