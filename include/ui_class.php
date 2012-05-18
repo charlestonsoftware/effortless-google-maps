@@ -29,6 +29,13 @@ if (! class_exists('EGM_UserInterface')) {
             global $egm_plugin, $egmAttributes, $egmMaps, $egmIdCounter;
             
             $egm_plugin->shortcode_was_rendered = true;
+            
+            // stop at max maps
+            //
+            //$egmMaxMaps = get_option( "MaxMapsPerPage", 2);
+            //if ($egmMaxMaps <= $egmIdCounter) return;
+			
+			$defView = $egm_plugin->settings->get_item('view');
 
             // Set the attributes, default or passed in shortcode
             //
@@ -39,7 +46,8 @@ if (! class_exists('EGM_UserInterface')) {
                     'size'      => ((trim($defSize)=='')?'100%x400':$defSize),
                     'theme'     => $egm_plugin->settings->get_item('theme'),
                     'zoom'      => '12',
-                    'view'	=> $egm_plugin->settings->get_item('view')
+                    'view'	=> ((trim($defView)=='')?'roadmap':$defView),
+                    'disableUI' => $egm_plugin->settings->get_item('disableUI')
                     ), 
                 $params
                 );
@@ -54,10 +62,6 @@ if (! class_exists('EGM_UserInterface')) {
             //
             if (!isSet($egmIdCounter)) $egmIdCounter = 0;
             $egmID = $egmIdCounter++;
-            
-            // Get the type of view
-            //
-            $egmView = $egm_plugin->settings->get_item('view');
                    
             // Keep stuff in range
             //
