@@ -90,7 +90,14 @@ if (! class_exists('EGM_Admin_Actions')) {
 	   	   __('The default address.', EGM_PREFIX),
 	   	   '359 Wando Place Drive, Suite D, Mount Pleasant, SC 29464'
 	   );
-	   	   
+	   	$egm_plugin->settings->add_item(
+            __('General Settings', EGM_PREFIX),
+            __('Default View', EGM_PREFIX),
+            'useSensor',
+            'checkbox',
+            false,
+            __("Use the user's Location Sensor (if available) and offer directions to this location")
+        );
         }
         
         /*************************************
