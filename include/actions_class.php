@@ -34,7 +34,7 @@ if (! class_exists('EGM_Actions')) {
             // If Google API Key Is Set, Pass It
             //
             $egmAPIKey = 'key=' . $egm_plugin->settings->get_item('api_key');
-            if ($egmAPIKey === 'key=') {
+            if ($egmAPIKey == 'key=') {
                 $egmAPIKey = '';
             }
             
