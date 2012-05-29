@@ -83,7 +83,7 @@ if (! class_exists('EGM_Admin_Actions')) {
 	   );
 	   $egm_plugin->settings->add_item(
 	   	   __('General Settings', EGM_PREFIX),
-	   	   __('Default View', EGM_PREFIX),
+	   	   __('Default Address', EGM_PREFIX),
 	   	   'address',
 	   	   'text',
 	   	   false,
@@ -92,11 +92,11 @@ if (! class_exists('EGM_Admin_Actions')) {
 	   );
 	   	$egm_plugin->settings->add_item(
             __('General Settings', EGM_PREFIX),
-            __('Default View', EGM_PREFIX),
+            __('Use Location Sensor', EGM_PREFIX),
             'useSensor',
             'checkbox',
             false,
-            __("Use the user's Location Sensor (if available) and offer directions to this location")
+            __("Use the user's Location Sensor (if available) and offer directions to your location")
         );
         }
         
