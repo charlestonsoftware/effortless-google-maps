@@ -38,7 +38,7 @@ if (! class_exists('EGM_Actions')) {
                 $egmAPIKey = '';
             }
             
-            wp_register_script('google_maps',"http://maps.googleapis.com/maps/api/js?$egmAPIKey&sensor=false");
+            wp_register_script('google_maps',"http://maps.googleapis.com/maps/api/js?$egmAPIKey&sensor=true");
             wp_register_script('effortless-gm',EGM_PLUGINURL . '/js/effortless-google-maps.js',array('jquery'));
         } 
         
