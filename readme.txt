@@ -5,7 +5,7 @@ Donate link: http://www.cybersprocket.com/products/effortless-google-maps/
 Tags: google maps
 Requires at least: 3.3
 Tested up to: 3.3.2
-Stable tag: 0.4
+Stable tag: 0.5
 
 Put an unlimited amount of Google Maps on any page or post with a simple shortcode or widget.   100% free premium plugin.
 
@@ -141,14 +141,16 @@ Multiple maps are now supported on the same page.
 
 == Changelog ==
 
+= 0.5 (May 29th, 2012) =
+
+* Significant improvement of load times
+* Allows enabling of location services/sensor
+* Can now get directions to your location
+
 = 0.4 (May 18th, 2012) =
 
 * Now supports multiple maps via the widgets and shortcode.
 * Can set default map type in shortcode
-
-= 0.4 (May, 2012) =
-
-* Ability to set the default map type
 
 = 0.3 (May, 2012) =
 
