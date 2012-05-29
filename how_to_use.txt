@@ -61,6 +61,7 @@
         <li><strong>theme</strong> - set the theme for this map only (default: selection from settings page)</li>
         <li><strong>zoom</strong> - how close to zoom in (default: 12 which is "street" level)</li>
         <li><strong>view</strong> - set the view mode ("satellite", "roadmap", "hybrid", and "terrain") for that map</li>
+        <li><strong>name</strong> - set the name for when the user clicks on your location</li>
     </ul>
     </p>
     
