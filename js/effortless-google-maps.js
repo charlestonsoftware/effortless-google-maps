@@ -14,7 +14,7 @@ var markers;
   * For stuff to do awesome stuff
   *
   */
-  var csl = {
+  var csl_egm = {
   	  
       
         /***************************
@@ -136,7 +136,7 @@ var markers;
   	  Map: function(aMapNumber) {
   	  	  //private: map number to look up at init
   	  	  this.__mapNumber = aMapNumber;
-          this.__locationServices = new csl.LocationServices();
+          this.__locationServices = new csl_egm.LocationServices();
 		  
 		  //function callbacks
 		  this.tilesLoaded = null;
@@ -249,7 +249,7 @@ var markers;
                 bounds.extend(_this.gmap.getCenter());
                 bounds.extend(latlng);
                 _this.gmap.fitBounds(bounds);
-                _this.userMarker = new csl.Marker(csl.Animation.Drop, _this, "you're location", null, latlng);
+                _this.userMarker = new csl_egm.Marker(csl_egm.Animation.Drop, _this, "you're location", null, latlng);
             },
             function (positionError) { });
           }
@@ -263,7 +263,7 @@ var markers;
   	  	  * returns: none
   	  	  */
   	  	  this.addMarkerAtCenter = function() {
-  	  	  	  this.centerMarker = new csl.Marker(csl.Animation.Drop, this, "", null, this.gmap.getCenter());
+  	  	  	  this.centerMarker = new csl_egm.Marker(csl_egm.Animation.Drop, this, "", null, this.gmap.getCenter());
   	  	  }
   	  	  
   	  	  /***************************
@@ -316,7 +316,7 @@ var markers;
  function InitializeTheMap() {
     for (egmMap in egmMaps)
     {
-    	    var cslmap = new csl.Map(egmMap);
+    	    var cslmap = new csl_egm.Map(egmMap);
     	    cslmap.doGeocode();
     }
  }
