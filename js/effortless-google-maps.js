@@ -193,6 +193,7 @@ var markers;
   	  	  * returns: none
   	  	  */
 		  this.__tilesAreLoaded = function() {
+            var canvas0 = document.getElementById("canvas" + this.canvasID);
 			jQuery(canvas0).find('img').css({'max-width': 'none'});
 			google.maps.event.removeListener(this.__tilesLoaded);
 			this.__tilesLoaded = null;
