@@ -96,6 +96,47 @@ var markers;
   	  	  
   	  	  this.__init();
   	  },
+      
+      /***************************
+  	 * Popup info window Object
+  	 * usage:
+  	 * create a google info window
+  	 * parameters:
+  	 * 	content: the content to show by default
+  	 */
+  	Info: function (content) {
+		this.__content = content;
+  	  	this.__position = position;
+  	  	
+  	  	this.__anchor = null;
+  	  	this.__gwindow = null;
+  	  	this.__gmap = null;
+  	  	
+  	  	this.openWithNewContent = function(map, object, content) {
+			this.__content = content;
+  	  		this.__gwindow = setContent = this.__content;
+  	  	  	this.open(map, object);
+  	  	}
+  	  	  
+  	  	this.open = function(map, object) {
+			this.__gmap = map.gmap;
+  	  	  	this.__anchor = object;
+  	  	  	this.__gwindow.open(this.__gmap, this.__anchor);
+  	  	}
+  	  	  
+  	  	this.close = function() {
+			this.__gwindow.close();
+  	  	}
+  	  	  
+  	  	this.__init = function() {
+			this.__gwindow = new google.maps.InfoWindow(
+  	  	  	{
+				content: this.__content
+  	  	  	});
+  	  	}
+  	  	  
+  	  	this.__init();
+  	},
   	  
   	  /***************************
   	  	  * Map Object
