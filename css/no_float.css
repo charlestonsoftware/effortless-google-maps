@@ -5,7 +5,7 @@
  **
  **/
 
- div#map_canvas {
+ div.no_float {
      float: left;
      margin: 12px;
      border: solid 1px black;

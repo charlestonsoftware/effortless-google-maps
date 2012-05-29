@@ -88,7 +88,7 @@ if (! class_exists('EGM_UserInterface')) {
             
             // Render the map div
             //
-            return '<div id="canvas'.$egmID.'" style="width:'.$egmWidth.'; height:'.$egmHeight.'"></div>';
+            return '<div class="'.$egm_plugin->settings->get_item('theme').'" id="canvas'.$egmID.'" style="width:'.$egmWidth.'; height:'.$egmHeight.'"></div>';
             
         }
         
