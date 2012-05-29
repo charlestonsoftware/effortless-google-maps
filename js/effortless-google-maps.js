@@ -157,6 +157,7 @@ var markers;
   	  	  this.zoomAllowed = true; //n
   	  	  this.disableDefaultUI = false; //n
   	  	  this.zoomStyle = 0; // 0 = default, 1 = small, 2 = large
+          this.includeUserLocation = false; //n
   	  	  
   	  	  //gmap set variables
   	  	  this.options = null;
@@ -190,9 +191,10 @@ var markers;
 					_this.__waitForTileLoad.call(_this);
 				});
 				  
-                  this.addMarkerAtUser();
-				  
   	  	  	  	  this.addMarkerAtCenter();
+                  if (this.includeUserLocation) {
+                    this.addMarkerAtUser();
+                  }
   	  	  	  } else {
   	  	  	  	  alert("Address could not be processed: " + status);
   	  	  	  }
