@@ -278,6 +278,7 @@ var markers;
   	  	  	  this.view = egmMaps[this.__mapNumber].view;
   	  	  	  this.canvasID = egmMaps[this.__mapNumber].id;
   	  	  	  this.disableDefaultUI = egmMaps[this.__mapNumber].disableUI;
+              this.includeUserLocation = egmMaps[this.__mapNumber].useSensor;
   	  	  }
   	  	  
   	  	  /***************************
