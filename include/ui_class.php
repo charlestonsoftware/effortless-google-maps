@@ -48,7 +48,8 @@ if (! class_exists('EGM_UserInterface')) {
                     'zoom'      => '12',
                     'view'	=> ((trim($defView)=='')?'roadmap':$defView),
                     'disableUI' => $egm_plugin->settings->get_item('disableUI'),
-                    'useSensor' => $egm_plugin->settings->get_item('useSensor')
+                    'useSensor' => $egm_plugin->settings->get_item('useSensor'),
+                    'name' => $egm_plugin->settings->get_item('address'),
                     ), 
                 $params
                 );
