@@ -55,47 +55,6 @@ var markers;
   	  	  
   	  	  this.__init();
   	  },
-  	  
-	  /***************************
-  	  	  * Popup info window Object
-  	  	  * usage:
-  	  	  * create a google info window
-  	  	  * parameters:
-  	  	  * 	content: the content to show by default
-  	  	  */
-  	  Info: function (content) {
-  	  	  this.__content = content;
-  	  	  this.__position = position;
-  	  	  
-  	  	  this.__anchor = null;
-  	  	  this.__gwindow = null;
-  	  	  this.__gmap = null;
-  	  	  
-  	  	  this.openWithNewContent = function(map, object, content) {
-  	  	  	  this.__content = content;
-  	  	  	  this.__gwindow = setContent = this.__content;
-  	  	  	  this.open(map, object);
-  	  	  }
-  	  	  
-  	  	  this.open = function(map, object) {
-  	  	  	  this.__gmap = map.gmap;
-  	  	  	  this.__anchor = object;
-  	  	  	  this.__gwindow.open(this.__gmap, this.__anchor);
-  	  	  }
-  	  	  
-  	  	  this.close = function() {
-  	  	  	  this.__gwindow.close();
-  	  	  }
-  	  	  
-  	  	  this.__init = function() {
-  	  	  	  this.__gwindow = new google.maps.InfoWindow(
-  	  	  	  	  {
-  	  	  	  	  	  content: this.__content,
-  	  	  	  	  });
-  	  	  }
-  	  	  
-  	  	  this.__init();
-  	  },
       
       /***************************
   	 * Popup info window Object
@@ -148,6 +107,7 @@ var markers;
   	  Map: function(aMapNumber) {
   	  	  //private: map number to look up at init
   	  	  this.__mapNumber = aMapNumber;
+          this.__infoWindow = new google.maps.InfoWindow();
 		  
 		  //function callbacks
 		  this.tilesLoaded = null;
@@ -249,6 +209,11 @@ var markers;
   	  	  */
   	  	  this.addMarkerAtCenter = function() {
   	  	  	  this.centerMarker = new csl.Marker(csl.Animation.Drop, this, "", null, this.gmap.getCenter());
+              _this = this;
+              google.maps.event.addListener(this.centerMarker.__gmarker, 'click',
+              (function () {
+                _this.__infoWindow.open(_this.gmap, _this.centerMarker.__gmarker);
+              }));
   	  	  }
   	  	  
   	  	  /***************************
@@ -264,6 +229,7 @@ var markers;
   	  	  	  this.view = egmMaps[this.__mapNumber].view;
   	  	  	  this.canvasID = egmMaps[this.__mapNumber].id;
   	  	  	  this.disableDefaultUI = egmMaps[this.__mapNumber].disableUI;
+              this.__infoWindow.setContent('<div><strong>' + egmMaps[this.__mapNumber].name + '</strong><br/><a href="http://maps.google.com/maps?daddr=' + egmMaps[this.__mapNumber].address  + '" target = "_blank">Directions to here</a></div>');
   	  	  }
   	  	  
   	  	  /***************************
