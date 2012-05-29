@@ -16,6 +16,35 @@ var markers;
   */
   var csl = {
   	  
+      
+        /***************************
+  	  	 * Location services
+  	  	 * usage:
+  	  	 * 		gets the users current location
+  	  	 */
+        LocationServices: function() {
+            this.theService = null;
+            
+            this.__init = function() {
+                try {
+                    if (typeof navigator.geolocation == 'undefined') {
+                        this.theService = google.gears.factory.create('beta.geolocation');
+                    }
+                    else {
+                        this.theService = navigator.geolocation;
+                    }
+                } catch (e) {}
+            };
+            
+            this.currentLocation = function(callback, errorCallback) {
+                if (this.theService) {
+                    this.theService.getCurrentPosition(callback, errorCallback);
+                }
+            };
+            
+            this.__init();
+        },
+         
 		/***************************
   	  	 * Animation enum technically
   	  	 * usage:
@@ -107,6 +136,7 @@ var markers;
   	  Map: function(aMapNumber) {
   	  	  //private: map number to look up at init
   	  	  this.__mapNumber = aMapNumber;
+          this.__locationServices = new csl.LocationServices();
 		  
 		  //function callbacks
 		  this.tilesLoaded = null;
@@ -132,6 +162,7 @@ var markers;
   	  	  this.options = null;
   	  	  this.gmap = null;
   	  	  this.centerMarker = null;
+          this.userMarker = null;
   	  	  
   	  	  /***************************
   	  	  * function: __geocodeResult
@@ -159,6 +190,7 @@ var markers;
 					_this.__waitForTileLoad.call(_this);
 				});
 				  
+                  this.addMarkerAtUser();
 				  
   	  	  	  	  this.addMarkerAtCenter();
   	  	  	  } else {
@@ -198,6 +230,27 @@ var markers;
 			this.__tilesLoaded = null;
 		  }
 		  
+          /***************************
+  	  	  * function: addMarkerAtUser
+  	  	  * usage:
+  	  	  * Puts a pretty marker right on the user's position
+  	  	  * parameters:
+  	  	  * 	none
+  	  	  * returns: none
+  	  	  */
+          this.addMarkerAtUser = function() {
+            var _this = this;
+            this.__locationServices.currentLocation(function(position) {
+                var bounds = new google.maps.LatLngBounds();
+                var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                bounds.extend(_this.gmap.getCenter());
+                bounds.extend(latlng);
+                _this.gmap.fitBounds(bounds);
+                _this.userMarker = new csl.Marker(csl.Animation.Drop, _this, "you're location", null, latlng);
+            },
+            function (positionError) { });
+          }
+          
   	  	  /***************************
   	  	  * function: addMarkerAtCenter
   	  	  * usage:
