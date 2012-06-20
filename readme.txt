@@ -141,6 +141,11 @@ Multiple maps are now supported on the same page.
 
 == Changelog ==
 
+= 0.6 (June 20th, 2012) =
+
+* Updated base code to ask for a vote
+* Fixed a typo that used the wrong your
+
 = 0.5 (May 29th, 2012) =
 
 * Significant improvement of load times
