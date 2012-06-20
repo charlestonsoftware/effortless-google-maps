@@ -250,7 +250,7 @@ var markers;
                 bounds.extend(_this.gmap.getCenter());
                 bounds.extend(latlng);
                 _this.gmap.fitBounds(bounds);
-                _this.userMarker = new csl_egm.Marker(csl_egm.Animation.Drop, _this, "you're location", null, latlng);
+                _this.userMarker = new csl_egm.Marker(csl_egm.Animation.Drop, _this, "your location", null, latlng);
             },
             function (positionError) { });
           }
