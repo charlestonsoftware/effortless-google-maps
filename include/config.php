@@ -23,6 +23,11 @@ if (defined('EGM_PLUGINDIR')) {
             
             'url'                   => 'http://www.cybersprocket.com/products/effortless-google-maps/',            
             'support_url'           => 'http://www.cybersprocket.com/products/effortless-google-maps/',
+
+            // Nag menu
+            //
+            'rate_url'              => 'http://wordpress.org/extend/plugins/google-maps-effortless/',
+            'forum_url'             => 'http://redmine.cybersprocket.com/projects/commercial-products/boards/41',
             
             'basefile'              => EGM_BASENAME,
             'plugin_path'           => EGM_PLUGINDIR,
