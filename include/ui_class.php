@@ -69,7 +69,7 @@ if (! class_exists('EGM_UserInterface')) {
                    
             // Keep stuff in range
             //
-            $egmZoom = EGM_UserInterface::manageZoom($this->egm->Attributes['zoom']);
+            $egmZoom = apply_filters($this->egm->prefix."ManageZoom", $this->egm->Attributes['zoom']);
 
             // Prep our new stuff for passing to the script            
             $this->egm->Attributes = array_merge($this->egm->Attributes,
@@ -90,8 +90,7 @@ if (! class_exists('EGM_UserInterface')) {
             
             // Render the map div
             //
-            return '<div class="'.$this->egm->wpcsl->settings->get_item('theme').'" id="canvas'.$egmID.'" style="width:'.$egmWidth.'; height:'.$egmHeight.'"></div>';
-            
+            return apply_filters($this->egm->prefix."-render", '<div class="'.$this->egm->wpcsl->settings->get_item('theme').'" id="canvas'.$egmID.'" style="width:'.$egmWidth.'; height:'.$egmHeight.'"></div>');
         }
         
         /*************************************
@@ -128,7 +127,8 @@ if (! class_exists('EGM_UserInterface')) {
                     $newNumber='18';
                     break;                    
             }
-            return EGM_UserInterface::CleanNumber($newNumber,0,20);
+
+            return apply_filters($this->egm->prefix."CleanNumber", $newNumber, 0, 20);
         }
         
         

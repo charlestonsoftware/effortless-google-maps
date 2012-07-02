@@ -71,12 +71,12 @@ if (! class_exists('EGM_Actions')) {
                 
                 // Render Scripts
                 //
-                wp_enqueue_script('google_maps');    
+                wp_enqueue_script('google_maps');
                 wp_enqueue_script('effortless-gm');
                 
                 // Render Styles
                 //
-                $this->egm->wpcsl->themes->assign_user_stylesheet($this->egm->Attributes['theme']);                
+                $this->egm->wpcsl->themes->assign_user_stylesheet($this->egm->Attributes['theme']);
                            
                 // Force our scripts to load for badly behaved themes
                 //

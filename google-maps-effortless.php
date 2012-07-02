@@ -166,6 +166,11 @@ class EffortlessGoogleMaps {
         // Text Domains
         //
         load_plugin_textdomain($this->prefix, false, $this->base_name . '/languages/');
+
+        // EGM Specific filters and actions
+        //
+        add_filter($this->prefix."CleanNumber", array(&$this->UI, 'cleanNumber'), 1, 3);
+        add_filter($this->prefix."ManageZoom", array(&$this->UI, 'manageZoom'), 1, 1);
     }
 
     // Create objects
