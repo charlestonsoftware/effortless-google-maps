@@ -38,7 +38,10 @@ if (class_exists('wpCSL_plugin__egm') === false) {
 }
 
 class EffortlessGoogleMaps {
+    // Main wpcsl object
     var $wpcsl;
+
+    // Defines
     var $prefix;
     var $base_name;
     var $plugin_dir;
@@ -46,6 +49,14 @@ class EffortlessGoogleMaps {
     var $plugin_url;
     var $icon_url;
     var $admin_page;
+
+    // Objects
+    var $Actions;
+    var $Admin_actions;
+    var $UI;
+
+    // Children globals
+    var $Attributes;
 
     // Constructor to create the default plugin
     function __construct() {
@@ -62,6 +73,7 @@ class EffortlessGoogleMaps {
 
         $this->_configure();
         $this->_includes();
+        $this->_create_objects();
         $this->_actions();
     }
 
@@ -77,7 +89,7 @@ class EffortlessGoogleMaps {
     // Configre wpcsl
     //
     function _configure() {
-        $egm_plugin = new wpCSL_plugin__egm(
+        $this->wpcsl = new wpCSL_plugin__egm(
             array(
                 'prefix'                => $this->prefix,
                 'name'                  => 'Effortless Google Maps',
@@ -137,24 +149,32 @@ class EffortlessGoogleMaps {
     function _actions() {
         // Regular Actions
         //
-        add_action('wp_enqueue_scripts' ,array('EGM_Actions','wp_enqueue_scripts')      );
+        add_action('wp_enqueue_scripts' ,array(&$this->Actions,'wp_enqueue_scripts')      );
         add_action( 'widgets_init', create_function( '', 'register_widget( "egmWidget" );' ) );
-        add_action('shutdown'           ,array('EGM_Actions','shutdown')                );
+        add_action('shutdown'           ,array(&$this->Actions,'shutdown')                );
 
         // Admin Actions
         //
-        add_action('admin_init'         ,array('EGM_Admin_Actions','admin_init')        );
-        add_action('admin_print_styles' ,array('EGM_Admin_Actions','admin_print_styles'));
+        add_action('admin_init'         ,array(&$this->Admin_actions,'admin_init')        );
+        add_action('admin_print_styles' ,array(&$this->Admin_actions,'admin_print_styles'));
 
         // Short Codes
         //
-        add_shortcode('effortless-gm'   ,array('EGM_UserInterface','render_shortcode')  );
-        add_shortcode('EFFORTLESS-GM'   ,array('EGM_UserInterface','render_shortcode')  );
-        add_shortcode('Effortless-GM'   ,array('EGM_UserInterface','render_shortcode')  );
+        add_shortcode('effortless-gm'   ,array(&$this->UI,'render_shortcode')  );
+        add_shortcode('EFFORTLESS-GM'   ,array(&$this->UI,'render_shortcode')  );
+        add_shortcode('Effortless-GM'   ,array(&$this->UI,'render_shortcode')  );
 
         // Text Domains
         //
-        load_plugin_textdomain(EGM_PREFIX, false, EGM_BASENAME . '/languages/');
+        load_plugin_textdomain($this->prefix, false, $this->base_name . '/languages/');
+    }
+
+    // Create objects
+    //
+    function _create_objects() {
+        $this->Actions = new EGM_Actions($this);
+        $this->Admin_actions = new EGM_Admin_Actions($this);
+        $this->UI = new EGM_UserInterface($this);
     }
 }
 
