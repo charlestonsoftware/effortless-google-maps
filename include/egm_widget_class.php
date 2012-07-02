@@ -12,8 +12,12 @@
 
 class egmWidget extends WP_Widget {
 
+    /** The egm plugin class
+    */
     var $egm;
 
+    /** Creates an egm widget
+    */
 	public function __construct() {
         $this->egm = $GLOBALS['EffortlessGoogleMaps'];
 
@@ -26,23 +30,30 @@ class egmWidget extends WP_Widget {
 		);
 	}
 
+    /** Create the form entry on the widget menu
+    * @param The instance to edit
+    */
  	public function form( $instance ) {
 		print $this->formatFormEntry($instance, 'address' , __( 'Address:', $this->egm->prefix)   ,''); 
 		print $this->formatFormEntry($instance, 'size'    , __( 'Size:', $this->egm->prefix)      ,''); 
 		print $this->formatFormEntry($instance, 'zoom'    , __( 'Zoom:', $this->egm->prefix)      ,'');
     }
 
+    /** Updates the instance
+    */
 	public function update( $new_instance, $old_instance ) {
-		
 		return $new_instance;
 	}
 
+    /** Displays the widget to the end user
+    * @param $args: arguments are not used
+    */
 	public function widget( $args, $instance ) {
 	    if (isset($instance['address']) && (trim($instance['address'])=='')) {
 	        unset($instance['address']);
 	    }
-	    	
-		print EGM_UserInterface::render_shortcode($instance);
+
+        echo apply_filters($this->egm->prefix."RenderShortcode", $instance);
 	}
 	
 	private function formatFormEntry($instance, $id,$label,$default) {
