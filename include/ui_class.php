@@ -15,48 +15,50 @@ if (! class_exists('EGM_UserInterface')) {
         /******************************
          * PUBLIC PROPERTIES & METHODS
          ******************************/
-        
+        var $egm;
+
         /*************************************
          * The Constructor
          */
-        function __construct($params) {
+        function __construct($parent) {
+            $this->egm = $parent;
         } 
         
         /*************************************
          * method: render_shortcode
          */
         function render_shortcode($params=null) {
-            global $egm_plugin, $egmAttributes, $egmMaps, $egmIdCounter;
+            global $egmMaps, $egmIdCounter;
             
-            $egm_plugin->shortcode_was_rendered = true;
+            $this->egm->wpcsl->shortcode_was_rendered = true;
             
             // stop at max maps
             //
             //$egmMaxMaps = get_option( "MaxMapsPerPage", 2);
             //if ($egmMaxMaps <= $egmIdCounter) return;
 			
-			$defView = $egm_plugin->settings->get_item('view');
+			$defView = $this->egm->wpcsl->settings->get_item('view');
 
             // Set the attributes, default or passed in shortcode
             //
-            $defSize = $egm_plugin->settings->get_item('size','100%x400');
-            $egmAttributes = shortcode_atts(
+            $defSize = $this->egm->wpcsl->settings->get_item('size','100%x400');
+            $this->egm->Attributes = shortcode_atts(
                 array(
-                    'address'   => $egm_plugin->settings->get_item('address'),
+                    'address'   => $this->egm->wpcsl->settings->get_item('address'),
                     'size'      => ((trim($defSize)=='')?'100%x400':$defSize),
-                    'theme'     => $egm_plugin->settings->get_item('theme'),
+                    'theme'     => $this->egm->wpcsl->settings->get_item('theme'),
                     'zoom'      => '12',
                     'view'	=> ((trim($defView)=='')?'roadmap':$defView),
-                    'disableUI' => $egm_plugin->settings->get_item('disableUI'),
-                    'useSensor' => $egm_plugin->settings->get_item('useSensor'),
-                    'name' => $egm_plugin->settings->get_item('address'),
+                    'disableUI' => $this->egm->wpcsl->settings->get_item('disableUI'),
+                    'useSensor' => $this->egm->wpcsl->settings->get_item('useSensor'),
+                    'name' => $this->egm->wpcsl->settings->get_item('address'),
                     ), 
                 $params
                 );
             
             // Size is the width x height, split it...
             //
-            list($egmWidth,$egmHeight) = (split('x',$egmAttributes['size']));
+            list($egmWidth,$egmHeight) = (split('x',$this->egm->Attributes['size']));
             $egmWidth  = EGM_UserInterface::CheckDimensions($egmWidth);
             $egmHeight = EGM_UserInterface::CheckDimensions($egmHeight);
             
@@ -67,10 +69,10 @@ if (! class_exists('EGM_UserInterface')) {
                    
             // Keep stuff in range
             //
-            $egmZoom = EGM_UserInterface::manageZoom($egmAttributes['zoom']);
+            $egmZoom = EGM_UserInterface::manageZoom($this->egm->Attributes['zoom']);
 
             // Prep our new stuff for passing to the script            
-            $egmAttributes = array_merge($egmAttributes,
+            $this->egm->Attributes = array_merge($this->egm->Attributes,
                 array(
                     'width'     => $egmWidth,
                     'height'    => $egmHeight,
@@ -80,7 +82,7 @@ if (! class_exists('EGM_UserInterface')) {
                 );
             
             //adds the map to the map list
-            $egmMaps[] = $egmAttributes;
+            $egmMaps[] = $this->egm->Attributes;
             
             // Lets get some variables into our script
             //
@@ -88,7 +90,7 @@ if (! class_exists('EGM_UserInterface')) {
             
             // Render the map div
             //
-            return '<div class="'.$egm_plugin->settings->get_item('theme').'" id="canvas'.$egmID.'" style="width:'.$egmWidth.'; height:'.$egmHeight.'"></div>';
+            return '<div class="'.$this->egm->wpcsl->settings->get_item('theme').'" id="canvas'.$egmID.'" style="width:'.$egmWidth.'; height:'.$egmHeight.'"></div>';
             
         }
         
