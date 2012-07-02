@@ -73,7 +73,6 @@ class EffortlessGoogleMaps {
 
         $this->_configure();
         $this->_includes();
-        $this->_create_objects();
         $this->_actions();
     }
 
@@ -179,7 +178,7 @@ class EffortlessGoogleMaps {
 }
 
 $GLOBALS['EffortlessGoogleMaps'] = new EffortlessGoogleMaps();
-
+$GLOBALS['EffortlessGoogleMaps']->_create_objects();
 }
 
 
