@@ -167,10 +167,14 @@ class EffortlessGoogleMaps {
         //
         load_plugin_textdomain($this->prefix, false, $this->base_name . '/languages/');
 
-        // EGM Specific filters and actions
+        // EGM Specific filters
         //
         add_filter($this->prefix."CleanNumber", array(&$this->UI, 'cleanNumber'), 1, 3);
         add_filter($this->prefix."ManageZoom", array(&$this->UI, 'manageZoom'), 1, 1);
+        add_filter($this->prefix."RenderShortcode",array(&$this->UI, 'render_shortcode'), 1, 1);
+
+        // EGM Specific actions
+        //
     }
 
     // Create objects
