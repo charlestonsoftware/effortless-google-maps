@@ -28,6 +28,7 @@ if (defined('EGM_PLUGINDIR')) {
             //
             'rate_url'              => 'http://wordpress.org/extend/plugins/google-maps-effortless/',
             'forum_url'             => 'http://redmine.cybersprocket.com/projects/commercial-products/boards/41',
+            'version'               => '0.65',
             
             'basefile'              => EGM_BASENAME,
             'plugin_path'           => EGM_PLUGINDIR,
