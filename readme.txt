@@ -141,6 +141,11 @@ Multiple maps are now supported on the same page.
 
 == Changelog ==
 
+= 0.65 (July 2nd, 2012) =
+
+* Updated tested up to
+* Updated rate us bar
+
 = 0.6 (June 20th, 2012) =
 
 * Updated base code to ask for a vote
