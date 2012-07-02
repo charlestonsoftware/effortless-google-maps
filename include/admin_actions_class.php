@@ -18,94 +18,100 @@ if (! class_exists('EGM_Admin_Actions')) {
         /******************************
          * PUBLIC PROPERTIES & METHODS
          ******************************/
-        
-        /*************************************
+
+        /** The egm main class
+        */
+        var $egm;
+
+        /**
          * The Constructor
          */
-        function __construct($params) {
+        function __construct() {
+            $this->egm = $GLOBALS['EffortlessGoogleMaps'];
         } 
         
-        
+        /** Initialize the admin page
+        */
         function admin_init() {
-            global $egm_plugin;
-    
-            // Then add our sections
-            //
-            $egm_plugin->settings->add_section(
-                array(
-                    'name'              => __('Info', EGM_PREFIX),
-                    'description'       => __(
-                        $egm_plugin->helper->get_string_from_phpexec(EGM_PLUGINDIR.'how_to_use.txt'),EGM_PREFIX),
-                    'start_collapsed'   => false,
-                )
-            );
+            if ($this->egm->wpcsl->isOurAdminPage) {
+                    // Then add our sections
+                    //
+                    $this->egm->wpcsl->settings->add_section(
+                        array(
+                            'name'              => __('Info', $this->egm->prefix),
+                            'description'       => __(
+                                $this->egm->wpcsl->helper->get_string_from_phpexec($this->egm->plugin_dir.'how_to_use.txt'),$this->egm->prefix),
+                            'start_collapsed'   => false,
+                        )
+                    );
             
-            // Then add our sections
-            //
-            $egm_plugin->settings->add_section(
-                array(
-                    'name'              => __('General Settings', EGM_PREFIX),
-                    'description'       => __(
-                        $egm_plugin->helper->get_string_from_phpexec(EGM_PLUGINDIR.'general_settings.txt'),EGM_PREFIX),
-                    'start_collapsed'   => false,
-                )
-            );        
+                    // Then add our sections
+                    //
+                    $this->egm->wpcsl->settings->add_section(
+                        array(
+                            'name'              => __('General Settings', $this->egm->prefix),
+                            'description'       => __(
+                                $this->egm->wpcsl->helper->get_string_from_phpexec($this->egm->plugin_dir.'general_settings.txt'),$this->egm->prefix),
+                            'start_collapsed'   => false,
+                        )
+                    );        
             
-            $egm_plugin->settings->add_item(
-                    __('General Settings', EGM_PREFIX), 
-                    __('Google API Key', EGM_PREFIX), 
-                    'api_key', 
-                    'text', 
+                    $this->egm->wpcsl->settings->add_item(
+                            __('General Settings', $this->egm->prefix), 
+                            __('Google API Key', $this->egm->prefix), 
+                            'api_key', 
+                            'text', 
+                            false,
+                            __('Your Google API Key. This is optional.', $this->egm->prefix)
+                   );
+                   $this->egm->wpcsl->settings->add_item(
+                            __('General Settings', $this->egm->prefix), 
+                            __('Map Size', $this->egm->prefix), 
+                            'size', 
+                            'text', 
+                            false,
+                            __('The default size of the map(s).  If not set it will be 100%x400.', $this->egm->prefix)
+                   );
+	           $this->egm->wpcsl->settings->add_item(
+	   	           __('General Settings', $this->egm->prefix),
+	   	           __('Default View', $this->egm->prefix),
+	   	           'view',
+	   	           'list',
+	   	           false,
+	   	           __('The type of map to display.', $this->egm->prefix),
+	   	           array(
+	   	   	           'Terrain View' => 'terrain',
+	   	   	           'Road View' => 'roadmap',
+	   	   	           'Satellite View' => 'satellite',
+	   	   	           'Hybrid View' => 'hybrid'
+	   	           )
+	           );
+	           $this->egm->wpcsl->settings->add_item(
+	   	           __('General Settings', $this->egm->prefix),
+	   	           __('Default Address', $this->egm->prefix),
+	   	           'address',
+	   	           'text',
+	   	           false,
+	   	           __('The default address.', $this->egm->prefix),
+	   	           '359 Wando Place Drive, Suite D, Mount Pleasant, SC 29464'
+	           );
+	   	        $this->egm->wpcsl->settings->add_item(
+                    __('General Settings', $this->egm->prefix),
+                    __('Use Location Sensor', $this->egm->prefix),
+                    'useSensor',
+                    'checkbox',
                     false,
-                    __('Your Google API Key. This is optional.', EGM_PREFIX)
-           );
-            $egm_plugin->settings->add_item(
-                    __('General Settings', EGM_PREFIX), 
-                    __('Map Size', EGM_PREFIX), 
-                    'size', 
-                    'text', 
-                    false,
-                    __('The default size of the map(s).  If not set it will be 100%x400.', EGM_PREFIX)
-           );
-	   $egm_plugin->settings->add_item(
-	   	   __('General Settings', EGM_PREFIX),
-	   	   __('Default View', EGM_PREFIX),
-	   	   'view',
-	   	   'list',
-	   	   false,
-	   	   __('The type of map to display.', EGM_PREFIX),
-	   	   array(
-	   	   	   'Terrain View' => 'terrain',
-	   	   	   'Road View' => 'roadmap',
-	   	   	   'Satellite View' => 'satellite',
-	   	   	   'Hybrid View' => 'hybrid'
-	   	   )
-	   );
-	   $egm_plugin->settings->add_item(
-	   	   __('General Settings', EGM_PREFIX),
-	   	   __('Default Address', EGM_PREFIX),
-	   	   'address',
-	   	   'text',
-	   	   false,
-	   	   __('The default address.', EGM_PREFIX),
-	   	   '359 Wando Place Drive, Suite D, Mount Pleasant, SC 29464'
-	   );
-	   	$egm_plugin->settings->add_item(
-            __('General Settings', EGM_PREFIX),
-            __('Use Location Sensor', EGM_PREFIX),
-            'useSensor',
-            'checkbox',
-            false,
-            __("Use the user's Location Sensor (if available) and offer directions to your location")
-        );
+                    __("Use the user's Location Sensor (if available) and offer directions to your location")
+                );
+            }
         }
         
-        /*************************************
+        /**
          * method: admin_print_styles
          */
         function admin_print_styles() {
-            if ( file_exists(EGM_PLUGINDIR.'css/admin.css')) {
-                wp_enqueue_style('csl_egm_admin_css', EGM_PLUGINURL .'/css/admin.css'); 
+            if ( file_exists($this->egm->prefix.'css/admin.css')) {
+                wp_enqueue_style('csl_egm_admin_css', $this->egm->plugin_url .'/css/admin.css'); 
             }               
         } 
     }
