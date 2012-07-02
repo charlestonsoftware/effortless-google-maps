@@ -18,39 +18,39 @@ if (! class_exists('EGM_Actions')) {
         /******************************
          * PUBLIC PROPERTIES & METHODS
          ******************************/
+        var $egm;
         
         /*************************************
          * The Constructor
          */
-        function __construct($params) {
+        function __construct(&$parent) {
+            $this->egm = $parent;
         }
         
         /*************************************
          * method: wp_enqueue_scripts
          */
         function wp_enqueue_scripts() {
-            global $egm_plugin;
             
             // If Google API Key Is Set, Pass It
             //
-            $egmAPIKey = 'key=' . $egm_plugin->settings->get_item('api_key');
+            $egmAPIKey = 'key=' . $this->egm->wpcsl->settings->get_item('api_key');
             if ($egmAPIKey == 'key=') {
                 $egmAPIKey = '';
             }
             
             wp_register_script('google_maps',"http://maps.googleapis.com/maps/api/js?$egmAPIKey&sensor=true");
-            wp_register_script('effortless-gm',EGM_PLUGINURL . '/js/effortless-google-maps.js',array('jquery'));
+            wp_register_script('effortless-gm',$this->egm->plugin_url . '/js/effortless-google-maps.js',array('jquery'));
         } 
         
         /*************************************
          * method: shutdown
          */
         function shutdown() {
-            global $egm_plugin, $egmAttributes;
             
             // If we rendered a shortcode...
             //
-            if ($egm_plugin->shortcode_was_rendered) {
+            if ($this->egm->wpcsl->shortcode_was_rendered) {
                 
                 // Render Scripts
                 //
@@ -59,7 +59,7 @@ if (! class_exists('EGM_Actions')) {
                 
                 // Render Styles
                 //
-                $egm_plugin->themes->assign_user_stylesheet($egmAttributes['theme']);                
+                $this->egm->wpcsl->themes->assign_user_stylesheet($this->egm->Attributes['theme']);                
                            
                 // Force our scripts to load for badly behaved themes
                 //
