@@ -13,22 +13,39 @@
 ************************************************************************/
 
 if (! class_exists('EGM_Actions')) {
+
+    /**
+     * Class: EGM_Actions
+     *
+     * The action hooks and helpers.
+     *
+     * The methods in here are normally called from an action hook that is
+     * called via the WordPress action stack.  
+     * 
+     * @See http://codex.wordpress.org/Plugin_API/Action_Reference
+     */
     class EGM_Actions {
         
         /******************************
          * PUBLIC PROPERTIES & METHODS
          ******************************/
+
+        /** @var the egm plugin class
+        */
         var $egm;
         
-        /*************************************
+        /**
          * The Constructor
          */
         function __construct() {
             $this->egm = $GLOBALS['EffortlessGoogleMaps'];
+            
         }
         
-        /*************************************
-         * method: wp_enqueue_scripts
+        /**
+         * @method wp_enqueue_scripts
+         * @return none
+         * @param none
          */
         function wp_enqueue_scripts() {
             
@@ -43,8 +60,8 @@ if (! class_exists('EGM_Actions')) {
             wp_register_script('effortless-gm',$this->egm->plugin_url . '/js/effortless-google-maps.js',array('jquery'));
         } 
         
-        /*************************************
-         * method: shutdown
+        /**
+         * @method shutdown
          */
         function shutdown() {
             
