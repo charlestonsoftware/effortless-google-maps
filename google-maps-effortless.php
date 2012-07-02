@@ -74,6 +74,8 @@ class EffortlessGoogleMaps {
         require_once($this->plugin_dir . 'include/egm_widget_class.php');
     }
 
+    // Configre wpcsl
+    //
     function _configure() {
         $egm_plugin = new wpCSL_plugin__egm(
             array(
@@ -130,6 +132,8 @@ class EffortlessGoogleMaps {
         );
     }
 
+    // Set up actions and filters
+    //
     function _actions() {
         // Regular Actions
         //
