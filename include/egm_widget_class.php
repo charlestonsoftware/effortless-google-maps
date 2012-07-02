@@ -12,20 +12,24 @@
 
 class egmWidget extends WP_Widget {
 
+    var $egm;
+
 	public function __construct() {
+        $this->egm = $GLOBALS['EffortlessGoogleMaps'];
+
 		parent::__construct(
-	 		EGM_PREFIX.'_widget', // Base ID
-			__('Effortless Google Map',EGM_PREFIX), // Name
+	 		$this->egm->prefix.'_widget', // Base ID
+			__('Effortless Google Map',$this->egm->prefix), // Name
 			array( 
-			    'description' => __( 'Add a Google Map to any widget box location.', EGM_PREFIX ), 
+			    'description' => __( 'Add a Google Map to any widget box location.', $this->egm->prefix ), 
 			    ) 
 		);
 	}
 
  	public function form( $instance ) {
-		print $this->formatFormEntry($instance, 'address' , __( 'Address:', EGM_PREFIX)   ,''); 
-		print $this->formatFormEntry($instance, 'size'    , __( 'Size:', EGM_PREFIX)      ,''); 
-		print $this->formatFormEntry($instance, 'zoom'    , __( 'Zoom:', EGM_PREFIX)      ,'');
+		print $this->formatFormEntry($instance, 'address' , __( 'Address:', $this->egm->prefix)   ,''); 
+		print $this->formatFormEntry($instance, 'size'    , __( 'Size:', $this->egm->prefix)      ,''); 
+		print $this->formatFormEntry($instance, 'zoom'    , __( 'Zoom:', $this->egm->prefix)      ,'');
     }
 
 	public function update( $new_instance, $old_instance ) {
