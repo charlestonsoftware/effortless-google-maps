@@ -4,8 +4,8 @@ Contributors: cybersprocket
 Donate link: http://www.cybersprocket.com/products/effortless-google-maps/
 Tags: google maps
 Requires at least: 3.3
-Tested up to: 3.4
-Stable tag: 0.6
+Tested up to: 3.4.1
+Stable tag: 0.65
 
 Put an unlimited amount of Google Maps on any page or post with a simple shortcode or widget.   100% free premium plugin.
 
