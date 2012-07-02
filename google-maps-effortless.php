@@ -172,9 +172,9 @@ class EffortlessGoogleMaps {
     // Create objects
     //
     function _create_objects() {
-        $this->Actions = new EGM_Actions($this);
-        $this->Admin_actions = new EGM_Admin_Actions($this);
-        $this->UI = new EGM_UserInterface($this);
+        $this->Actions = new EGM_Actions();
+        $this->Admin_actions = new EGM_Admin_Actions();
+        $this->UI = new EGM_UserInterface();
     }
 }
 

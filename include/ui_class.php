@@ -16,20 +16,20 @@ if (! class_exists('EGM_UserInterface')) {
          * PUBLIC PROPERTIES & METHODS
          ******************************/
         var $egm;
+        var $maps;
+        var $idCounter;
 
         /*************************************
          * The Constructor
          */
-        function __construct($parent) {
-            $this->egm = $parent;
+        function __construct() {
+            $this->egm = $GLOBALS['EffortlessGoogleMaps'];
         } 
         
         /*************************************
          * method: render_shortcode
          */
         function render_shortcode($params=null) {
-            global $egmMaps, $egmIdCounter;
-            
             $this->egm->wpcsl->shortcode_was_rendered = true;
             
             // stop at max maps
@@ -64,8 +64,8 @@ if (! class_exists('EGM_UserInterface')) {
             
             //set the egmID
             //
-            if (!isSet($egmIdCounter)) $egmIdCounter = 0;
-            $egmID = $egmIdCounter++;
+            if (!isSet($this->idCounter)) $this->idCounter = 0;
+            $egmID = $this->idCounter++;
                    
             // Keep stuff in range
             //
@@ -82,11 +82,11 @@ if (! class_exists('EGM_UserInterface')) {
                 );
             
             //adds the map to the map list
-            $egmMaps[] = $this->egm->Attributes;
+            $this->maps[] = $this->egm->Attributes;
             
             // Lets get some variables into our script
             //
-            wp_localize_script('effortless-gm','egmMaps',$egmMaps);
+            wp_localize_script('effortless-gm','egmMaps',$this->maps);
             
             // Render the map div
             //

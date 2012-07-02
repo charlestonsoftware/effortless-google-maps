@@ -23,8 +23,8 @@ if (! class_exists('EGM_Admin_Actions')) {
         /*************************************
          * The Constructor
          */
-        function __construct($parent) {
-            $this->egm = $parent;
+        function __construct() {
+            $this->egm = $GLOBALS['EffortlessGoogleMaps'];
         } 
         
         
