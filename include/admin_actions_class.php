@@ -18,62 +18,63 @@ if (! class_exists('EGM_Admin_Actions')) {
         /******************************
          * PUBLIC PROPERTIES & METHODS
          ******************************/
-        
+        var $egm;
+
         /*************************************
          * The Constructor
          */
-        function __construct($params) {
+        function __construct($parent) {
+            $this->egm = $parent;
         } 
         
         
         function admin_init() {
-            global $egm_plugin;
     
             // Then add our sections
             //
-            $egm_plugin->settings->add_section(
+            $this->egm->wpcsl->settings->add_section(
                 array(
-                    'name'              => __('Info', EGM_PREFIX),
+                    'name'              => __('Info', $this->egm->prefix),
                     'description'       => __(
-                        $egm_plugin->helper->get_string_from_phpexec(EGM_PLUGINDIR.'how_to_use.txt'),EGM_PREFIX),
+                        $this->egm->wpcsl->helper->get_string_from_phpexec($this->egm->plugin_dir.'how_to_use.txt'),$this->egm->prefix),
                     'start_collapsed'   => false,
                 )
             );
             
             // Then add our sections
             //
-            $egm_plugin->settings->add_section(
+            $this->egm->wpcsl->settings->add_section(
                 array(
-                    'name'              => __('General Settings', EGM_PREFIX),
+                    'name'              => __('General Settings', $this->egm->prefix),
                     'description'       => __(
-                        $egm_plugin->helper->get_string_from_phpexec(EGM_PLUGINDIR.'general_settings.txt'),EGM_PREFIX),
+                        $this->egm->wpcsl->helper->get_string_from_phpexec($this->egm->plugin_dir.'general_settings.txt'),$this->egm->prefix),
                     'start_collapsed'   => false,
                 )
             );        
             
-            $egm_plugin->settings->add_item(
-                    __('General Settings', EGM_PREFIX), 
-                    __('Google API Key', EGM_PREFIX), 
+            $this->egm->wpcsl->settings->add_item(
+                    __('General Settings', $this->egm->prefix), 
+                    __('Google API Key', $this->egm->prefix), 
                     'api_key', 
                     'text', 
                     false,
-                    __('Your Google API Key. This is optional.', EGM_PREFIX)
+                    __('Your Google API Key. This is optional.', $this->egm->prefix)
            );
-            $egm_plugin->settings->add_item(
-                    __('General Settings', EGM_PREFIX), 
-                    __('Map Size', EGM_PREFIX), 
+           $this->egm->wpcsl->settings->add_item(
+                    __('General Settings', $this->egm->prefix), 
+                    __('Map Size', $this->egm->prefix), 
                     'size', 
                     'text', 
                     false,
-                    __('The default size of the map(s).  If not set it will be 100%x400.', EGM_PREFIX)
+                    __('The default size of the map(s).  If not set it will be 100%x400.', $this->egm->prefix)
            );
-	   $egm_plugin->settings->add_item(
-	   	   __('General Settings', EGM_PREFIX),
-	   	   __('Default View', EGM_PREFIX),
+	   $this->egm->wpcsl->settings->add_item(
+	   	   __('General Settings', $this->egm->prefix),
+	   	   __('Default View', $this->egm->prefix),
 	   	   'view',
 	   	   'list',
 	   	   false,
-	   	   __('The type of map to display.', EGM_PREFIX),
+	   	   __('The type of map to display.', $this->egm->prefix),
 	   	   array(
 	   	   	   'Terrain View' => 'terrain',
 	   	   	   'Road View' => 'roadmap',
@@ -81,18 +82,18 @@ if (! class_exists('EGM_Admin_Actions')) {
 	   	   	   'Hybrid View' => 'hybrid'
 	   	   )
 	   );
-	   $egm_plugin->settings->add_item(
-	   	   __('General Settings', EGM_PREFIX),
-	   	   __('Default Address', EGM_PREFIX),
+	   $this->egm->wpcsl->settings->add_item(
+	   	   __('General Settings', $this->egm->prefix),
+	   	   __('Default Address', $this->egm->prefix),
 	   	   'address',
 	   	   'text',
 	   	   false,
-	   	   __('The default address.', EGM_PREFIX),
+	   	   __('The default address.', $this->egm->prefix),
 	   	   '359 Wando Place Drive, Suite D, Mount Pleasant, SC 29464'
 	   );
-	   	$egm_plugin->settings->add_item(
-            __('General Settings', EGM_PREFIX),
-            __('Use Location Sensor', EGM_PREFIX),
+	   	$this->egm->wpcsl->settings->add_item(
+            __('General Settings', $this->egm->prefix),
+            __('Use Location Sensor', $this->egm->prefix),
             'useSensor',
             'checkbox',
             false,
@@ -104,8 +105,8 @@ if (! class_exists('EGM_Admin_Actions')) {
          * method: admin_print_styles
          */
         function admin_print_styles() {
-            if ( file_exists(EGM_PLUGINDIR.'css/admin.css')) {
-                wp_enqueue_style('csl_egm_admin_css', EGM_PLUGINURL .'/css/admin.css'); 
+            if ( file_exists($this->egm->prefix.'css/admin.css')) {
+                wp_enqueue_style('csl_egm_admin_css', $this->egm->plugin_url .'/css/admin.css'); 
             }               
         } 
     }
