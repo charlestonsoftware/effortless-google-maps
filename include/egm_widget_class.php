@@ -53,7 +53,7 @@ class egmWidget extends WP_Widget {
 	        unset($instance['address']);
 	    }
 
-        echo apply_filters($this->egm->prefix."RenderShortcode", $instance);
+        echo apply_filters($this->egm->prefix."RenderWidget", $instance);
 	}
 	
 	private function formatFormEntry($instance, $id,$label,$default) {

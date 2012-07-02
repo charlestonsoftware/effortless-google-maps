@@ -90,7 +90,7 @@ if (! class_exists('EGM_UserInterface')) {
             
             // Render the map div
             //
-            return '<div class="'.$this->egm->wpcsl->settings->get_item('theme').'" id="canvas'.$egmID.'" style="width:'.$egmWidth.'; height:'.$egmHeight.'"></div>';
+            return apply_filters($this->egm->prefix.'Render', '<div class="'.$this->egm->wpcsl->settings->get_item('theme').'" id="canvas'.$egmID.'" style="width:'.$egmWidth.'; height:'.$egmHeight.'"></div>');
         }
         
         /*************************************

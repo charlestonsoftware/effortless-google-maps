@@ -38,27 +38,56 @@ if (class_exists('wpCSL_plugin__egm') === false) {
 }
 
 class EffortlessGoogleMaps {
-    // Main wpcsl object
+    /** The main wpcsl object for this plugin */
     var $wpcsl;
 
-    // Defines
+    /***********/
+    /* Defines */
+    /***********/
+
+    /** Plugin prefix */
     var $prefix;
+
+    /** The Plugin Base name */
     var $base_name;
+
+    /** The plugin directory */
     var $plugin_dir;
+
+    /** The directory to icons */
     var $icon_dir;
+
+    /** The url to the plugin */
     var $plugin_url;
+
+    /** The url to the icons */
     var $icon_url;
+
+    /** The admin page */
     var $admin_page;
 
-    // Objects
+    /***********/
+    /* Objects */
+    /***********/
+
+    /** Actions class */
     var $Actions;
+
+    /** Admin page actions */
     var $Admin_actions;
+
+    /** UI Stuff */
     var $UI;
 
-    // Children globals
+    /** Global maps attributes */
     var $Attributes;
 
-    // Constructor to create the default plugin
+    /***********/
+    /* Methods */
+    /***********/
+
+    /** Constructor to create the default plugin
+    */
     function __construct() {
         $this->plugin_dir = plugin_dir_path(__FILE__);
         $this->icon_dir = $this->plugin_dir . 'images/icons/';
@@ -76,8 +105,8 @@ class EffortlessGoogleMaps {
         $this->_actions();
     }
 
-    // Include our needed files
-    //
+    /** Include our needed files
+    */
     function _includes() {
         require_once($this->plugin_dir . 'include/actions_class.php');
         require_once($this->plugin_dir . 'include/admin_actions_class.php');
@@ -85,8 +114,8 @@ class EffortlessGoogleMaps {
         require_once($this->plugin_dir . 'include/egm_widget_class.php');
     }
 
-    // Configre wpcsl
-    //
+    /** Configre wpcsl
+    */
     function _configure() {
         $this->wpcsl = new wpCSL_plugin__egm(
             array(
@@ -143,8 +172,8 @@ class EffortlessGoogleMaps {
         );
     }
 
-    // Set up actions and filters
-    //
+    /** Set up actions and filters
+    */
     function _actions() {
         // Regular Actions
         //
@@ -171,14 +200,14 @@ class EffortlessGoogleMaps {
         //
         add_filter($this->prefix."CleanNumber", array(&$this->UI, 'cleanNumber'), 1, 3);
         add_filter($this->prefix."ManageZoom", array(&$this->UI, 'manageZoom'), 1, 1);
-        add_filter($this->prefix."RenderShortcode",array(&$this->UI, 'render_shortcode'), 1, 1);
+        add_filter($this->prefix."RenderWidget",array(&$this->UI, 'render_shortcode'), 1, 1);
 
         // EGM Specific actions
         //
     }
 
-    // Create objects
-    //
+    /** Create objects
+    */
     function _create_objects() {
         $this->Actions = new EGM_Actions();
         $this->Admin_actions = new EGM_Admin_Actions();
