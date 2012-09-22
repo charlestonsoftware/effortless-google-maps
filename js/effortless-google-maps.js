@@ -9,7 +9,7 @@ var opts;
 var markers;
 
 /***************************
-  * Cyber Sprocket Labs Namespace
+  * CSA Labs Namespace
   *
   * For stuff to do awesome stuff
   *

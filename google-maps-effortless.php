@@ -1,14 +1,14 @@
 <?php
 /*
 Plugin Name: Effortless Google Maps
-Plugin URI: http://www.cybersprocket.com/products/effortless-google-maps/
+Plugin URI: http://www.charlestonsw.com/products/effortless-google-maps/
 Description: Put Google Maps on any page or post with a simple shortcode or widget.   100% free premium plugin. 
-Version: 0.65
-Author: Cyber Sprocket Labs
-Author URI: http://www.cybersprocket.com
+Version: 0.66
+Author: Charleston Software Associates
+Author URI: http://www.charlestonsw.com
 License: GPL3
 
-Copyright 2012  Cyber Sprocket Labs (info@cybersprocket.com)
+Copyright 2012  Charleston Software Associates (info@charlestonsw.com)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -123,14 +123,14 @@ class EffortlessGoogleMaps {
                 'name'                  => 'Effortless Google Maps',
                 'sku'                   => 'EGMS',
             
-                'url'                   => 'http://www.cybersprocket.com/products/effortless-google-maps/',            
-                'support_url'           => 'http://www.cybersprocket.com/products/effortless-google-maps/',
+                'url'                   => 'http://www.charlestonsw.com/product/effortless-google-maps/',
+                'support_url'           => 'http://www.charlestonsw.com/product/effortless-google-maps/',
 
                 // Nag menu
                 //
                 'rate_url'              => 'http://wordpress.org/extend/plugins/google-maps-effortless/',
-                'forum_url'             => 'http://redmine.cybersprocket.com/projects/commercial-products/boards/41',
-                'version'               => '0.65',
+                'forum_url'             => 'http://wordpress.org/support/plugin/google-maps-effortless/',
+                'version'               => '0.66',
             
                 'basefile'              => $this->base_name,
                 'plugin_path'           => $this->plugin_dir,

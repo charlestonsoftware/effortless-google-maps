@@ -1,11 +1,11 @@
 === Effortless Google Maps ===
 Plugin Name: Effortless Google Maps
-Contributors: cybersprocket
-Donate link: http://www.cybersprocket.com/products/effortless-google-maps/
+Contributors: charlestonsw
+Donate link: http://www.charlestonsw.com/product/effortless-google-maps/
 Tags: google maps
 Requires at least: 3.3
-Tested up to: 3.4.1
-Stable tag: 0.65
+Tested up to: 3.4.2
+Stable tag: 0.66
 
 Put an unlimited amount of Google Maps on any page or post with a simple shortcode or widget.   100% free premium plugin.
 
@@ -35,27 +35,19 @@ If you like this plugin we hope that you will help support our continued develop
 
 = Donate =
 
-[Donate today!](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5CFGV6A9NFRLL)
+[Donate today!](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ASRPXSQN88UQG)
 
 = Rate Us =
 
 Please [rate us](http://wordpress.org/extend/plugins/google-maps-effortless/)!
-Give us a chance to <a href="http://www.cybersprocket.com/contact-us/">address your concerns</a> if we didn't earn 5 stars.
+Give us a chance to <a href="http://www.charlestonsw.com/mindset/contact-us/">address your concerns</a> if we didn't earn 5 stars.
 
 = Special Requests =
 
 We do accept feature requests for all of our plugins, free ones included. The most requested features will make it into the next version.
     
-<strong>If you need a special feature NOW, <a href="http://www.cybersprocket.com/contact-us/">contact us</a>!</strong> We offer expedited feature development. Most features can be implemented in less than a week for $200!
+<strong>If you need a special feature NOW, <a href="http://www.charlestonsw.com/mindset/contact-us/">contact us</a>!</strong> We offer expedited feature development. Most features can be implemented in less than a week for $200!
 
-= Looking For Customized WordPress Plugins? =
-
-If you are looking for custom WordPress development for your own plugins, give 
-us a call.   Not only can we offer competitive rates but we can also leverage 
-our existing framework for WordPress applications which reduces development time 
-and costs.
-
-Learn more at: http://www.cybersprocket.com/services/wordpress-developers/
 
 = Our Philosophy =
 
@@ -69,10 +61,8 @@ While our plugins may not be the prettiest on the block, we do try to make sure 
 
 = Related Links =
 
-* [Effortless Google Maps](http://www.cybersprocket.com/products/effortless-google-maps/)
-* [Other Cyber Sprocket Plugins](http://wordpress.org/extend/plugins/profile/cybersprocket/) 
-* [Custom WordPress Development](http://www.cybersprocket.com/services/wordpress-developers/)
-* [Our Facebook Page](http://www.facebook.com/cyber.sprocket.labs)
+* [Effortless Google Maps](http://www.charlestonsw.com/product/effortless-google-maps/)
+* [Other CSA Plugins](http://profiles.wordpress.org/charlestonsw)
 
 == Installation ==
 
@@ -95,40 +85,33 @@ While our plugins may not be the prettiest on the block, we do try to make sure 
 
 = How do I report a bug? =
 
-Post in our [support forum](http://redmine.cybersprocket.com/projects/commercial-products/boards/41).  We check this regularly for feature requests and bug reports.  You can also [contact us](http://www.cybersprocket.com/contact-us) to request premium support if you need immediate assistance.
+Post in our [support forum](http://wordpress.org/support/plugin/google-maps-effortless/).
 
 = Do you have documentation? =
 
-Yes, we have comprehensive documentation on our [support pages](http://redmine.cybersprocket.com/projects/effortless-gm/wiki).
+Yes, we have comprehensive documentation on our [support pages](http://www.charlestonsw.com/support/documentation/effortless-google-maps/).
 
-= Can I get more information about your updates? =
-
-All of our plugins have a [comprehensive road map](http://redmine.cybersprocket.com/projects/effortless-gm/roadmap?tracker_ids[]=2&completed=1) published on the support site.
 
 = What are the terms of the license? =
 
 The license is based on GPL.  You get the code, feel free to modify it as you
 wish.  We prefer that our customers pay us because they like what we do and 
 want to support our efforts to bring useful software to market.  Learn more
-on our [CSL License Terms page](http://redmine.cybersprocket.com/projects/commercial-products/wiki/Cyber_Sprocket_Labs_Licensing_Terms "CSL License Terms page").
+on our [CSA License Terms page](http://www.charlestonsw.com/license-and-refund-policy/).
 
 = How can I translate the plugin into my language? =
 
 * Find on internet the free program POEDIT, and learn how it works.
 * Use the .pot file located in the languages directory of this plugin to create or update the .po files.
 * Place these file in the languages subdirectory.
-* If everything is ok, email the files to lobbyjones@cybersprocket.com and we will add them to the next release.
+* If everything is ok, [contact us](http://www.charlestonsw.com/mindset/contact-us/) and we will add them to the next release.
 * For more information on POT files, domains, gettext and i18n have a look at the I18n for WordPress developers Codex page and more specifically at the section about themes and plugins.
 
 If you create a translation file please send it to us and we'll include it in the next release!  We'll also list you here in our credits section!
 
 = What browsers are supported? =
 
-All major browsers should work, however Cyber Sprocket Labs only officially supports the current and prior releases of Internet Explorer, Firefox, Chrome, and Safari.
-
-== Upgrade Notice ==
-
-Multiple maps are now supported on the same page.
+All major browsers should work, however CSA only officially supports the current and prior releases of Internet Explorer, Firefox, Chrome, and Safari.
 
 == Screenshots ==
 
@@ -140,6 +123,10 @@ Multiple maps are now supported on the same page.
 
 
 == Changelog ==
+
+= 0.66 (Sep 2012) =
+
+* Move ownership to CSA.
 
 = 0.65 (July 2nd, 2012) =
 
