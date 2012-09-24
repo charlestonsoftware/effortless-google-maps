@@ -47,6 +47,10 @@
     text-decoration:none;
 }
 
+a.moreinfo_clicker {
+    text-decoration: none;
+}
+
 /*----------------------------------
  * Option Packs
  */
@@ -95,6 +99,45 @@ div.icon32 {
     background: url("../images/icons32.png") no-repeat scroll transparent;    
 }
 
+.action_icon {
+    height: 20px;
+    width: 20px;
+    float: left;
+    background: url("../core/images/General_icons16.png") no-repeat scroll transparent;
+}
+.view_icon {
+    background-position: -40px 0px;
+}
+.view_icon:hover {
+  background-position: -40px -20px;
+}
+.edit_icon {
+  background-position: -62px 0px;
+}
+.edit_icon:hover {
+  background-position: -62px -20px;
+}
+.delete_icon {
+  background-position: -84px 0px;
+}
+.delete_icon:hover {
+  background-position: -84px -20px;
+}
+.createpage_icon {
+  background-position: -150px 0px;
+}
+.createpage_icon:hover {
+  background-position: -150px -20px;
+}
+
+.haspage_icon {
+  background-position: -150px -40px;
+}
+.haspage_icon:hover {
+  background-position: -150px -20px;
+}
+
+
 
 
 /*----------------------------------
@@ -118,13 +161,14 @@ div.csl_themes-input {
 div.csl_themes-moreicon {
     background: url("../images/General_icons16.png") 
         no-repeat scroll 
-        -17px 0px 
+        -15px 0px
         transparent; 
     height:20px;
     width: 20px;
     float: left;
     cursor: pointer;  
     margin-top: 2px;
+    margin-left: 3px;
 }
 div.csl_themes-moretext {
     display: none;

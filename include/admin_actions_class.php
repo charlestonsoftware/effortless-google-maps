@@ -110,7 +110,7 @@ if (! class_exists('EGM_Admin_Actions')) {
          * method: admin_print_styles
          */
         function admin_print_styles() {
-            if ( file_exists($this->egm->prefix.'css/admin.css')) {
+            if ( file_exists($this->egm->plugin_dir.'css/admin.css')) {
                 wp_enqueue_style('csl_egm_admin_css', $this->egm->plugin_url .'/css/admin.css'); 
             }               
         } 
