@@ -188,9 +188,9 @@ class EffortlessGoogleMaps {
 
         // Short Codes
         //
-        add_shortcode('effortless-gm'   ,array(&$this->UI,'render_shortcode')  );
-        add_shortcode('EFFORTLESS-GM'   ,array(&$this->UI,'render_shortcode')  );
-        add_shortcode('Effortless-GM'   ,array(&$this->UI,'render_shortcode')  );
+        add_shortcode('effortless-gm'   ,array(&$this,'render_shortcode')  );
+        add_shortcode('EFFORTLESS-GM'   ,array(&$this,'render_shortcode')  );
+        add_shortcode('Effortless-GM'   ,array(&$this,'render_shortcode')  );
 
         // Text Domains
         //
@@ -198,12 +198,22 @@ class EffortlessGoogleMaps {
 
         // EGM Specific filters
         //
-        add_filter($this->prefix."CleanNumber", array(&$this->UI, 'cleanNumber'), 1, 3);
-        add_filter($this->prefix."ManageZoom", array(&$this->UI, 'manageZoom'), 1, 1);
-        add_filter($this->prefix."RenderWidget",array(&$this->UI, 'render_shortcode'), 1, 1);
+        add_filter($this->prefix."CleanNumber"  , array(&$this->UI, 'cleanNumber'), 1, 3);
+        add_filter($this->prefix."ManageZoom"   , array(&$this->UI, 'manageZoom'), 1, 1);
+        add_filter($this->prefix."RenderWidget" , array(&$this->UI, 'render_shortcode'), 1, 1);
 
         // EGM Specific actions
         //
+    }
+
+    /**
+     * Render the shortcode
+     * 
+     * @return string
+     *
+     */
+    function render_shortcode($params=null) {
+            return $this->UI->render_shortcode($params);
     }
 
     /** Create objects

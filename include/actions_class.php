@@ -39,7 +39,6 @@ if (! class_exists('EGM_Actions')) {
          */
         function __construct() {
             $this->egm = $GLOBALS['EffortlessGoogleMaps'];
-            
         }
         
         /**

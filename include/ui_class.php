@@ -44,7 +44,7 @@ if (! class_exists('EGM_UserInterface')) {
             $defSize = $this->egm->wpcsl->settings->get_item('size','100%x400');
             $this->egm->Attributes = shortcode_atts(
                 array(
-                    'address'   => $this->egm->wpcsl->settings->get_item('address'),
+                    'address'   => $this->egm->wpcsl->settings->get_item('address','Charleston, SC, USA'),
                     'size'      => ((trim($defSize)=='')?'100%x400':$defSize),
                     'theme'     => $this->egm->wpcsl->settings->get_item('theme'),
                     'zoom'      => '12',
@@ -55,7 +55,11 @@ if (! class_exists('EGM_UserInterface')) {
                     ), 
                 $params
                 );
-            
+
+            if($this->egm->Attributes['address'] == '') {
+                $this->egm->Attributes['address'] = 'Charleston SC USA';
+            }
+
             // Size is the width x height, split it...
             //
             list($egmWidth,$egmHeight) = (split('x',$this->egm->Attributes['size']));
@@ -90,7 +94,9 @@ if (! class_exists('EGM_UserInterface')) {
             
             // Render the map div
             //
-            return apply_filters($this->egm->prefix.'Render', '<div class="'.$this->egm->wpcsl->settings->get_item('theme').'" id="canvas'.$egmID.'" style="width:'.$egmWidth.'; height:'.$egmHeight.'"></div>');
+            $content ='';
+            $content .= '<div class="'.$this->egm->wpcsl->settings->get_item('theme').'" id="canvas'.$egmID.'" style="width:'.$egmWidth.'; height:'.$egmHeight.'"></div>';
+            return apply_filters($this->egm->prefix.'Render', $content);
         }
         
         /*************************************
